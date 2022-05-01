@@ -1,0 +1,47 @@
+<!-- Login -->
+<form (ngSubmit)="onSubmit(f)" #f="ngForm" class="col-12 justify-content-center m-auto">
+    <!-- Email -->
+    <div class="row">
+        <div class="form-group email">
+            <label for="email"></label>
+            <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Email" 
+            name="email" 
+            ngModel 
+            required 
+            #email="ngModel">
+        </div>
+    </div>
+    <!-- Password -->
+    <div class="row">
+        <div class="form-group">
+            <label for="password"></label>
+            <input 
+            type="password" 
+            class="form-control" 
+            placeholder="Password" 
+            name="password" 
+            ngModel 
+            required
+            #password="ngModel">
+        </div>
+    </div>
+    <!-- Forgot Password -->
+    <div class="row">
+        <div class="form-group">
+            <div class="forgPass text-start">
+                <mat-checkbox>Forgot your password ?</mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <!-- Submit -->
+    <div class="row confirmBtn col-12 mx-0">
+        <div class="form-group">
+            <div class="text-center">
+                <button class="btn col-9 py-2 text-white" type="submit" [disabled]="!f.valid">Login</button>
+            </div>
+        </div>
+    </div>
+</form>
