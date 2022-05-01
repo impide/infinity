@@ -1,0 +1,65 @@
+<!-- Sign in -->
+<form (submit)="onSignup(signupForm)" #signupForm="ngForm" class="col-12 justify-content-center m-0 w-100">
+    <!-- Username -->
+    <div class="row">
+        <div class="form-group username">
+            <label for="username"></label>
+            <input type="text" class="form-control" placeholder="Username" name="username" autofocus="none"
+                autocomplete="off" ngModel required pattern="[A-Za-z\d\.]{3,10}" minlength="4" #username="ngModel">
+            <!-- Error -->
+            <span *ngIf="username.errors?.['required'] && username.touched" class="text-danger">Please enter a
+                pseudo</span>
+            <span *ngIf="username.errors?.['pattern']" class="text-danger">Your username must contain: 1 uppercase
+                letter, 1 lowercase letter and 4 characters minimum</span>
+        </div>
+    </div>
+    <!-- Email -->
+    <div class="row">
+        <div class="form-group email">
+            <label for="email"></label>
+            <input type="email" class="form-control" placeholder="E-mail" name="email" autocomplete="off" ngModel
+                required email #email="ngModel">
+            <!-- Error -->
+            <span *ngIf="email.errors?.['required'] && email.touched" class="text-danger">Please enter a email</span>
+            <span *ngIf="email.errors?.['email']" class="text-danger">Please enter a valid email</span>
+        </div>
+    </div>
+    <!-- Password -->
+    <div class="row">
+        <div class="form-group password">
+            <label for="password"></label>
+            <input type="password" class="form-control" placeholder="Password" name="password" ngModel required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #password="ngModel">
+            <!-- Error -->
+            <span *ngIf="password.errors?.['required'] && password.touched" class="text-danger">Please enter a
+                password</span>
+            <span *ngIf="password.errors?.['pattern']" class="text-danger">Your password must contain: 1 uppercase
+                letter, 1
+                lowercase letter and 8 characters minimum</span>
+        </div>
+    </div>
+    <!-- Confirm Password -->
+    <div class="row">
+        <div class="form-group confirmPassword mb-4">
+            <label for="confirmPassword"></label>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" ngModel
+                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #confirmPassword="ngModel">
+            <!-- Error -->
+            <span *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched" class="text-danger">Please
+                confirm
+                your password</span>
+            <span *ngIf="confirmPassword.touched && confirmPassword.value !== password.value"
+                class="text-danger">Password are not the same</span>
+        </div>
+    </div>
+    <!-- Submit -->
+    <div class="row submitBtn">
+        <div class="form-group">
+            <div class="text-center mb-3">
+                <button class="btn col-9 py-2 text-white" type="submit">Create</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Loading -->
+<!-- <mat-progress-spinner [mode]="'indeterminate'" *ngIf="(loading$|async)"></mat-progress-spinner> -->
