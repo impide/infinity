@@ -1,0 +1,26 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+    <div class="container-fluid d-flex justify-content-between">
+        <div class="col-4 d-flex">
+            <!-- Brand -->
+            <a class="navbar-brand">Infinite</a>
+            <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Section Tab -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" *ngFor="let tab of tablists">
+                        <a class="nav-link" [routerLink]="[tab.route]">{{ tab.tabName }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Username / Avatar / Power Button -->
+        <div class="col-4">
+
+        </div>
+    </div>
+</nav>

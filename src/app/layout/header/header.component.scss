@@ -1,0 +1,21 @@
+// Navbar
+.navbar {
+    position: relative;
+    z-index: 10;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.navbar .navbar-brand{
+    font-weight: 900;
+}
+
+.navbar .nav-link {
+    border-radius: 10px;
+}
+
+// Router Link Active
+.sectionActive {
+    background: #212529;
+    border-radius: 10px;
+    color: #fff !important;
+}
