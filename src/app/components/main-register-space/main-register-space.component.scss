@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.register-space {
+    background: linear-gradient(90deg,#174AB3,#4432B2);
+    min-height: calc(100% - 56px);
+}
+
+// Sign in title - Login title
+h1 {
+    font-size: 145px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+h3 {
+    font-size: 50px;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+button {
+    width: 10em;
+    height: 2.8em;
+    border-radius: 20px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: 2px solid #fff;
+    transition: all 1s;
+    box-shadow: 
+    -10px -10px 15px #174AB3,
+    10px 10px 15px #4432B2,
+    inset -10px -10px 15px #174AB3,
+    inset 10px 10px 15px #4432B2,
+}
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 100px;
+    }
+  }
