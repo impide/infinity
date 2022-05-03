@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private snackBarService: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   // Submit Form
   onSubmit(form: NgForm) {
-    // this.authService.login(form.value.email, form.value.password);
+    this.authService.signin(form.value.email, form.value.password);
   }
 
 }
