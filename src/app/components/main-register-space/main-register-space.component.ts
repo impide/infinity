@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -8,6 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./main-register-space.component.scss']
 })
 export class MainRegisterSpaceComponent implements OnInit {
+  isAuth$ = this.authService.isAuth$.asObservable();
 
   constructor(private authService: AuthService) { }
 
