@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&display=swap');
+
+// Feed
+.header {
+    position: relative;
+    height: 72px;
+    background: url(../../../assets/images/Wave.png);
+    background-repeat: no-repeat;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+// Add Post
+.addPost {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 30px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.containerAdd span {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+}
+
+.bi-plus-circle-fill {
+    color: #5783fb;
+    transition: all .5s;
+}
+
+.addPost:hover .bi-plus-circle-fill {
+    color: #e74573;
+    transform: rotateZ(90deg);
+}
+
+// Post
+.cards {
+    position: relative;
+    border-radius: 15px;
+
+    // Cards Header
+    .cards-header {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.375);
+        opacity: 0;
+        transition: all .3s;
+
+        .user-profile .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+
+            img {
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        .user-profile .creator {
+            color: #fff;
+            font-size: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .setting .bi-three-dots {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+
+    // Cards Body
+    .cards-body {
+        cursor: pointer;
+
+        img {
+            border-radius: 15px;
+        }
+    }
+}
+
+.cards:hover .cards-header {
+    opacity: 1;
+}

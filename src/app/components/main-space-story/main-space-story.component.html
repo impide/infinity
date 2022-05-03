@@ -1,1 +1,54 @@
-<p>main-space-story works!</p>
+<!-- Main Space Story -->
+<div class="main-space-story px-2">
+    <div class="header col-xl-12 pt-2">
+        <div class="col-sm-6 col-lg-2 mb-4 ms-auto me-2">
+            <!-- Add Post -->
+            <div class="addPost d-flex justify-content-between align-items-center p-2 me-2">
+                <div class="containerAdd">
+                    <span>Add post</span>
+                </div>
+                <div class="plusButton" (click)="onCreatePost()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Masonry -->
+    <div class="row">
+        <div class="col-12">
+            <ngx-masonry [ordered]="true" class="w-100">
+                <div ngxMasonryItem *ngFor="let post of posts; let i = index" class="col-4">
+                    <div class="cards p-1">
+                        <div class="cards-header d-flex justify-content-between align-items-center p-2">
+                            <div class="user-profile d-flex align-items-center">
+                                <div class="avatar me-2">
+                                    <img class="w-100 h-100" [src]="post.avatarCreator" alt="Avatar">
+                                </div>
+                                <div class="creator">
+                                    {{ post.creator }}
+                                </div>
+                            </div>
+                            <div class="setting">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white"
+                                    class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="cards-body" (click)="onViewPost(post)">
+                            <img [src]="post.image" class="w-100 h-100">
+                        </div>
+                    </div>
+                </div>
+            </ngx-masonry>
+        </div>
+    </div>
+
+
+</div>
