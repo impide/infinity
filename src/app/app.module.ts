@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -12,6 +11,9 @@ import { NgxMasonryModule } from 'ngx-masonry';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
 import { MainRegisterSpaceComponent } from './components/main-register-space/main-register-space.component';
@@ -29,6 +31,9 @@ import { ViewPostComponent } from './layout/modal/view-post/view-post.component'
 import { AddPostComponent } from './layout/modal/add-post/add-post.component';
 import { DeletePostComponent } from './layout/modal/delete-post/delete-post.component';
 import { UserProfileComponent } from './layout/header/user-profile/user-profile.component';
+import { FriendsListsComponent } from './components/main-space-messenger/friends-lists/friends-lists.component';
+import { MainMessagesComponent } from './components/main-space-messenger/main-messages/main-messages.component';
+import { PublicationComponent } from './layout/cards/publication/publication.component';
 
 
 @NgModule({
@@ -48,7 +53,10 @@ import { UserProfileComponent } from './layout/header/user-profile/user-profile.
     ViewPostComponent,
     AddPostComponent,
     DeletePostComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FriendsListsComponent,
+    MainMessagesComponent,
+    PublicationComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,10 @@ import { UserProfileComponent } from './layout/header/user-profile/user-profile.
     NgxMasonryModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
