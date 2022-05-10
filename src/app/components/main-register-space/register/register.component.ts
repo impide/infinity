@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterAnimation } from 'src/app/layout/animation/register-animation';
 import { StateRegisterService } from 'src/app/layout/animation/register-animation';
@@ -10,7 +10,6 @@ import { StateRegisterService } from 'src/app/layout/animation/register-animatio
   animations: [RegisterAnimation]
 })
 export class RegisterComponent implements OnInit {
-  @Output() fromRegisterToHome = new EventEmitter<boolean>();
 
   constructor(
     private dialog: MatDialog,
@@ -30,6 +29,7 @@ export class RegisterComponent implements OnInit {
     this.stateRegister.toSignInState();
   }
 
+  // Close
   closeModal() {
     this.dialog.closeAll();
   }

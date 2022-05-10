@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Submit Form
+  // Create a new Account
   onSignup(form: NgForm) {
     if (form.invalid) {
       return;
@@ -25,6 +25,4 @@ export class SigninComponent implements OnInit {
     const password = form.value.password;
     this.authService.signup(username, email, password);
   }
-
-
 }
