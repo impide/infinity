@@ -1,0 +1,50 @@
+// Header Sidebar
+.header-sidebar {
+  background: linear-gradient(to bottom, rgba(77, 77, 77, 0.155), rgba(140, 140, 140, 0.155));
+
+  .bi-app-indicator,
+  .bi-chat-left-text-fill,
+  .bi-three-dots-vertical {
+    font-size: 22px;
+    color: rgba(140, 140, 140, 0.555);
+    cursor: not-allowed;
+  }
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+}
+
+// Search Friends
+#searchBox {
+  flex-basis: 50px;
+  background-color: #fbfbfb;
+  border-bottom: 1px solid #e1e4e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  .bi-search {
+    font-size: 20px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px #efefef;
+    &::placeholder {
+      color: #a4a4a4;
+      font-weight: 100;
+    }
+  }
+}
+
+// Users on Infinite
