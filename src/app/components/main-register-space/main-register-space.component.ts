@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./main-register-space.component.scss']
 })
 export class MainRegisterSpaceComponent implements OnInit {
-  // Observable Auth
+  // Observable Authentification
   isAuth$ = this.authService.isAuth$.asObservable();
 
   constructor(private authService: AuthService) { }
