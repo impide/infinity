@@ -1,0 +1,100 @@
+// Main Profile
+.main-space-profile {
+    .background_defaultCover {
+        position: relative;
+        height: 400px;
+    }
+
+    // Pseudo User
+    .pseudo-user {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+
+        span {
+            font-family: 'Pacifico', cursive;
+            font-size: 30px;
+            color: #fff;
+        }
+    }
+
+    // Add Friend Buttton
+    .add-friend {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+    }
+
+
+    // Avatar User
+    .avatar-user {
+        position: absolute;
+        z-index: 999;
+        bottom: -175px;
+        right: 2.5rem;
+        width: 300px;
+        height: 300px;
+        outline: 5px solid #fff;
+        border-radius: 50%;
+
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    // Tab
+    .tabSpace {
+        height: 50px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        margin-bottom: 6em;
+
+        .section ul {
+            list-style-type: none;
+        }
+
+        .section li {
+            font-family: "Poppins", sans-serif;
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+            .activeTab {
+                background: #212529;
+                border-radius: 10px;
+                color: #fff !important;
+            }
+        }
+    }
+
+    // Add Post
+    .addPostBox {
+        position: relative;
+    }
+
+    .addPost {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 30px;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    .containerAdd span {
+        font-family: "Pacifico", cursive;
+        font-size: 16px;
+    }
+
+    .bi-plus-circle-fill {
+        font-size: 30px;
+        color: #5783fb;
+        transition: all 0.5s;
+    }
+
+    .addPost:hover .bi-plus-circle-fill {
+        color: #e74573;
+        transform: rotateZ(90deg);
+    }
+}
