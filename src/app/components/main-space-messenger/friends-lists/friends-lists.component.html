@@ -14,7 +14,7 @@
     <i class="bi bi-search me-4"></i>
     <input [(ngModel)]="searchText" type="text" placeholder="Search users on Infinite" />
 </div>
-<!-- New Users on Infinite  -->
+<!-- Users Panel  -->
 <mat-accordion>
     <!-- Users on Infinite -->
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -32,6 +32,25 @@
             </div>
             <div class="col-6">
                 <button mat-raised-button (click)="goToProfile(user)">See Profile</button>
+            </div>
+        </div>
+    </mat-expansion-panel>
+    <!-- Users on Infinite -->
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Lists of Friends on Infinite
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="newUser-panel col-12 d-flex align-items-center" *ngFor="let friend of friendsLists">
+            <div class="avatar mx-3 col-3">
+                <img class="w-100 h-100" [src]="friend.avatar" />
+            </div>
+            <div class="pseudo col-3">
+                <div class="name">{{friend.username}}</div>
+            </div>
+            <div class="col-6">
+                <button mat-raised-button>See Profile</button>
             </div>
         </div>
     </mat-expansion-panel>

@@ -10,9 +10,12 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./friends-lists.component.scss']
 })
 export class FriendsListsComponent implements OnInit {
-  // Observable Users
+  // Users Subscription
   newUsersSub: Subscription;
   newUsers: UserModel[];
+
+  // Friends Subscription
+  friendsLists: { username: string, avatar: string, userId: string }[] = [];
 
   // Filter Users on Search bar
   searchText: string;
@@ -27,11 +30,13 @@ export class FriendsListsComponent implements OnInit {
 
   ngOnInit(): void {
     // Get all Users
-    this.authService.getUsers();
-    // Filtered Users list without current User
+    this.authService.getAllUsers();
     this.newUsersSub = this.authService.users$.subscribe(
       (users: UserModel[]) => {
+        // Filtered Users lists without current User
         this.newUsers = users.filter(x => x._id !== this.authService.getCurrentUserId());
+        // Filtered Users friends-lists of current User
+        this.friendsLists = users.filter(x => x._id === this.authService.getCurrentUserId())[0].friends;
       }
     )
   }
