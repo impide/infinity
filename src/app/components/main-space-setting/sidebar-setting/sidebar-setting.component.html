@@ -1,0 +1,7 @@
+<!-- Sidebar-Setting -->
+<ul class="list-group d-flex mt-5">
+    <li class="list-group-item d-flex align-items-center" *ngFor="let route of settingRoutes">
+        <i class="bi {{route.settingClass}} mx-3"></i>
+        <span class="ms-2">{{ route.settingName }}</span>
+    </li>
+</ul>
