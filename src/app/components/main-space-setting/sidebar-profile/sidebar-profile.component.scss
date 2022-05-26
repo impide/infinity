@@ -1,0 +1,30 @@
+// Sidebar Profile
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+// Infos
+.infos {
+    .bi-person-lines-fill,
+    .bi-shield-lock,
+    .bi-envelope {
+        font-size: 25px;
+        color: #fff;
+    }
+}
+
+// Languages
+::ng-deep .mat-select-value-text {
+    color: #fff;
+}

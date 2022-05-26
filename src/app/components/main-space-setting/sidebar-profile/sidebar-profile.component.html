@@ -1,0 +1,33 @@
+<!-- Sidebar Profile -->
+<div class="avatar mx-auto mt-5">
+    <label for="file">
+        <img id="post-preview-image" [src]="authService.getCurrentAvatar()" alt="Avatar">
+    </label>
+    <input class="d-none" #photoSelector (change)="onPhotoSelected(photoSelector)" accept="image/*" type="file"
+        id="file">
+</div>
+<div class="col-12 change-avatar d-flex justify-content-center text-white" *ngIf="!photoSelector.files[0]">
+    <p class="text-center">Change your avatar</p>
+    <i class="bi bi-pencil ms-2"></i>
+</div>
+<div class="col-12 change-avatar d-flex justify-content-center text-white" *ngIf="photoSelector.files[0]">
+    <button class="btn btn-success mt-2" (click)="onUpdateAvatar()">Confirm</button>
+</div>
+<!-- Info -->
+<div class="infos px-3">
+    <h3 class="text-white">Info</h3>
+    <div class="modifier-input d-flex mb-2" *ngFor="let setting of profileSettingService.ProfileSettingData">
+        <i class="bi {{setting.infosClass}} me-2"></i>
+        <input class="form-control" [type]="setting.inputType" [value]="setting.inputValue" disabled>
+    </div>
+</div>
+<!-- Language -->
+<div class="languages px-3 mt-5">
+    <h3 class="text-white">Languages</h3>
+    <mat-form-field appearance="fill" class="w-100">
+        <mat-label class="text-white">Interface</mat-label>
+        <mat-select [(value)]="selectedLanguage">
+            <mat-option [value]="lang.language" *ngFor="let lang of interfaceLanguage">{{lang.language}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
