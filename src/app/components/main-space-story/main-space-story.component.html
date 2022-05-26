@@ -19,11 +19,12 @@
     </div>
 
     <!-- Masonry -->
-    <div class="row">
+    <div class="row w-100">
         <div class="col-12">
             <ngx-masonry [ordered]="true" class="w-100">
-                <div ngxMasonryItem *ngFor="let post of posts; let i = index" class="col-4">
+                <div ngxMasonryItem *ngFor="let post of (posts$|async); let i = index" class="col-4">
                     <div class="cards p-1">
+                        <!-- Header (Avatar) -->
                         <div class="cards-header d-flex justify-content-between align-items-center p-2">
                             <div class="user-profile d-flex align-items-center">
                                 <div class="avatar me-2">
@@ -35,14 +36,22 @@
                             </div>
                             <div class="setting">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="white"
-                                    class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    class="bi bi-three-dots" viewBox="0 0 16 16" (click)="onOpenSetting(post._id)">
                                     <path
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg>
                             </div>
                         </div>
+                        <!-- Body (Image) -->
                         <div class="cards-body" (click)="onViewPost(post)">
                             <img [src]="post.image" class="w-100 h-100">
+                        </div>
+                        <!-- Footer (Like) -->
+                        <div class="cards-footer">
+                            <i class="bi bi-heart-fill" (click)="onLikePost(post)" [ngClass]="{
+                                'bi-heart-fill-active': post.likes.includes(authService.getCurrentUserId()), 
+                                'bi-heart-fill-no-active': !(post.likes.includes(authService.getCurrentUserId()))}">
+                            </i>
                         </div>
                     </div>
                 </div>

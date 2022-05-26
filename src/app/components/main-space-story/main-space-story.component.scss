@@ -36,7 +36,6 @@
 // Post
 .cards {
     position: relative;
-    border-radius: 15px;
 
     // Cards Header
     .cards-header {
@@ -77,13 +76,30 @@
     // Cards Body
     .cards-body {
         cursor: pointer;
+    }
 
-        img {
-            border-radius: 15px;
+    // Cards-Footer
+    .cards-footer {
+        position: absolute;
+        bottom: 5px;
+        right: 1rem;
+        opacity: 0;
+        transition: all .3s;
+
+        .bi-heart-fill-no-active {
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .bi-heart-fill-active {
+            font-size: 30px;
+            color: rgba(255, 0, 0, 0.600);
+            cursor: pointer;
         }
     }
 }
 
-.cards:hover .cards-header {
+.cards:hover .cards-header,
+.cards:hover .cards-footer {
     opacity: 1;
 }
