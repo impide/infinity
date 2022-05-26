@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { SnackBarService } from 'src/app/layout/snackbar/snackbar-service';
+import { AuthService } from 'src/app/services/authentification/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    private snackbar: SnackBarService
   ) { }
 
   ngOnInit(): void {
