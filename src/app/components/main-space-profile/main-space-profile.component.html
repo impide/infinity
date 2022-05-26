@@ -13,13 +13,13 @@
         </div>
     </div>
 
-    <!-- Tab Lists -->
+    <!-- Profile Routes -->
     <div class="tabSpace w-100">
         <div class="section d-flex justify-content-between align-items-center h-100">
             <ul class="col-6 d-flex justify-content-start align-items-center m-0">
-                <li class="me-5" *ngFor="let tab of tabSpace">
+                <li class="me-5" *ngFor="let route of profileRoutes">
                     <a class="nav-link" routerLinkActive="activeTab" [routerLinkActiveOptions]="{exact:
-                        true}" [routerLink]="[tab.routerPath]">{{tab.titleTab}}</a>
+                        true}" [routerLink]="[route.routePath]">{{route.profileName}}</a>
                 </li>
             </ul>
             <div class="col-4 d-flex justify-content-start align-items-center m-0 addPostBox">
@@ -33,6 +33,15 @@
                         <i class="bi bi-plus-circle-fill"></i>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stories -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <app-stories></app-stories>
             </div>
         </div>
     </div>
@@ -64,7 +73,7 @@
         </div>
         <!-- Avatar -->
         <div class="avatar-user">
-            <img class="w-100 h-100" [src]="authService.getCurrentAvatar()" alt="Avatar">
+            <img class="w-100 h-100" [src]="targetAvatar" alt="Avatar">
         </div>
     </div>
 
@@ -72,9 +81,9 @@
     <div class="tabSpace w-100">
         <div class="section d-flex align-items-center h-100">
             <ul class="col-6 d-flex justify-content-start align-items-center m-0">
-                <li class="me-5" *ngFor="let tab of tabSpace">
+                <li class="me-5" *ngFor="let route of profileRoutes">
                     <a class="nav-link" routerLinkActive="activeTab" [routerLinkActiveOptions]="{exact:
-                        true}" [routerLink]="[tab.routerPath]">{{tab.titleTab.split('My')[1]}}</a>
+                        true}" [routerLink]="[route.routePath]">{{route.profileName.split('My')[1]}}</a>
                 </li>
             </ul>
         </div>
