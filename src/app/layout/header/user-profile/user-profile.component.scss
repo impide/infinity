@@ -1,4 +1,36 @@
+// Notification
+.notification {
+    .mat-icon {
+        font-size: 30px;
+        color: #0000001f;
+        vertical-align: bottom;
+    }
+
+    .messages .profile .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .messages .choice {
+        .bi-check,
+        .bi-x {
+            font-size: 30px;
+        }
+    }
+}
+
 //  Avatar
+.notif-menu {
+    top: 42px; 
+    left: -320px;
+}
 .profil-menu,
 .power-button-menu { 
     top: 50px; 
@@ -46,4 +78,8 @@
 .dropdown-menu li,
 .dropdown-menu a {
     cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    display: none;
 }
