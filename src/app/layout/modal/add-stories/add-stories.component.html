@@ -1,0 +1,30 @@
+<div class="card-background">
+    <div class="stories-options d-flex justify-content-end mb-2">
+        <span class="d-flex align-items-center" (click)="onResetForm(category, photoSelector)">
+            Reset
+            <i class="bi bi-arrow-counterclockwise ms-2"></i>
+        </span>
+    </div>
+    <div class="category-stories mb-2">
+        <mat-form-field class="stories-full-width w-100" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput #category maxlength="100" required autocomplete="off">
+            <mat-hint align="end">{{category.value.length}} / 100</mat-hint>
+        </mat-form-field>
+    </div>
+    <div *ngIf="selectedImageFile" class="px-2 mx-auto mb-2" id="post-preview">
+        <img id="post-preview-image" class="w-100 h-100" src="#" alt="image">
+    </div>
+    <div class="stories-action d-flex justify-content-between col-12">
+        <button class="btn col-9 ps-0">
+            <label for="photo_upload">
+                <input #photoSelector (change)="onPhotoSelected(photoSelector)" id="photo_upload" type="file"
+                    accept="image/*">
+                <mat-icon class="text-custom">insert_photo</mat-icon>
+            </label>
+        </button>
+        <div class="submit-btn d-flex col-2">
+            <button type="submit" class="btn btn-success w-100" (click)="onValidateStories(category)">Submit</button>
+        </div>
+    </div>
+</div>

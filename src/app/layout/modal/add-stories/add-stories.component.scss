@@ -1,0 +1,39 @@
+// Reset Form
+.stories-options {
+    span {
+        cursor: pointer;
+    }
+    .bi-arrow-counterclockwise {
+        font-size: 20px;
+    }
+}
+
+// Title
+.category-stories {
+    font-size: .8rem;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+// Preview Image
+#post-preview {
+    width: 450px;
+    height: 300px;
+}
+
+#post-preview-image {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    border: 1px dashed gray;
+}
+
+// Input
+label {
+    cursor: pointer;
+}
+
+.text-custom {
+    color: #174AB3;
+}

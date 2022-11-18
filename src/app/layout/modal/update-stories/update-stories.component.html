@@ -1,0 +1,78 @@
+<div class="update-stories-container">
+    <div class="button-choice d-flex justify-content-evenly col-12">
+        <button type="button" class="btn btn-outline-primary col-4"
+            [ngClass]="{'bg-primary text-white': optionsChoice === 'Add to'}" (click)="chooseOption('Add to')">Add
+            to</button>
+        <span>or</span>
+        <button type="button" class="btn btn-outline-danger col-4"
+            [ngClass]="{'bg-danger text-white': optionsChoice === 'Delete'}"
+            (click)="chooseOption('Delete')">Delete</button>
+    </div>
+    <!-- Cases -->
+    <div class="add-to-container" [ngSwitch]="optionsChoice">
+        <!-- [Add to] -->
+        <div class="add-to" *ngSwitchCase="'Add to'">
+            <hr>
+            <!-- Select Category -->
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Choose Category</mat-label>
+                <mat-select [(ngModel)]="selectedCategory">
+                    <mat-option *ngFor="let unique of (uniqueCategories$ | async)" [value]="unique.category">
+                        {{unique.category}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- Select Image -->
+            <div *ngIf="selectedImageFile" class="px-2 mx-auto mb-2" id="post-preview">
+                <img id="post-preview-image" class="w-100 h-100" src="#" alt="image">
+            </div>
+            <div class="stories-action d-flex justify-content-between col-12">
+                <button class="btn col-9 ps-0">
+                    <label for="photo_upload">
+                        <input #photoSelector (change)="onPhotoSelected(photoSelector)" id="photo_upload" type="file"
+                            accept="image/*">
+                        <mat-icon class="text-custom">insert_photo</mat-icon>
+                    </label>
+                </button>
+                <!-- Submit Button -->
+                <div class="submit-btn d-flex col-2">
+                    <button type="submit" class="btn btn-success w-100" (click)="onValidateStories()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!-- [Delete] -->
+        <div class="add-to" *ngSwitchCase="'Delete'">
+            <hr>
+            <!-- Select Category -->
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Choose Category</mat-label>
+                <mat-select [(ngModel)]="selectedCategory">
+                    <mat-option *ngFor="let unique of (uniqueCategories$ | async)" [value]="unique.category">
+                        {{unique.category}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- Select One or Multiple -->
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>How many do you want Delete</mat-label>
+                <mat-select [(ngModel)]="selectedNumber">
+                    <mat-option value="one">Only one</mat-option>
+                    <mat-option value="multiple">Multiple</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <ul class="lists-stories d-flex justify-content-between w-100 px-0 pb-2" *ngIf="selectedCategory">
+                <li class="list-storie w-100 me-2"
+                    *ngFor="let storie of (filteredCategory(selectedCategory) | async); let i = index">
+                    <img [src]="storie.image" alt="Image">
+                    <mat-radio-button class="w-100 mt-3" [value]="i" (click)="selectedOneStorie(storie)"
+                        *ngIf="selectedNumber === 'one'">
+                    </mat-radio-button>
+                </li>
+            </ul>
+            <!-- Submit Button -->
+            <div class="submit-btn d-flex align-items-center ms-auto col-12">
+                <p class="col-10 m-0"><strong>Are you sure ? This action is irreversible</strong></p>
+                <button type="submit" class="btn btn-primary text-center w-100" (click)="onDeleteStories()"
+                    [disabled]="!(selectedCategory) || !(selectedNumber) || !(storieIdToDelete)">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

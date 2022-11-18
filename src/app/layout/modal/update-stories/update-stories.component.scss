@@ -1,0 +1,40 @@
+// Preview Image
+#post-preview {
+    width: 450px;
+    height: 400px;
+}
+
+#post-preview-image {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1em;
+    border: 1px dashed gray;
+}
+
+// Delete Choice
+.lists-stories {
+    list-style: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .list-storie {
+        position: relative;
+
+        img {
+            position: relative;
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1em;
+            cursor: pointer;
+        }
+    }
+}
+
+:host ::ng-deep .mat-radio-label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,17 @@
+<!-- Storie View Modal -->
+<div class="storie-view-container">
+    <div class="storie-view">
+        <!-- Stories View -->
+        <div class="header w-100 p-3">
+            <ul class="w-100 d-flex justify-content-between p-0">
+                <li *ngFor="let storie of importedStorieData.storiesCategories" class="w-100"
+                    [ngClass]="{'mx-2': storieData.storiesLength > 1}">
+                    <!-- Progress Bar -->
+                    <mat-progress-bar mode="determinate" [value]="storie.progress">
+                    </mat-progress-bar>
+                </li>
+            </ul>
+        </div>
+        <img class="w-100 h-100" [src]="importedStorieData.storiesCategories[indexImage]?.image" alt="Image">
+    </div>
+</div>

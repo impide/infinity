@@ -1,0 +1,24 @@
+// Storie View Modal
+.storie-view-container {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+
+    .storie-view {
+        position: relative;
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            ul {
+                list-style: none;
+            }
+        }
+        
+        img {
+            object-position: center;
+        }
+    }
+}
