@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+#Back-end
+/backend
+/src/.env
+/src/environments/*
