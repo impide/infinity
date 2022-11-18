@@ -4,7 +4,7 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { MainRegisterSpaceComponent } from './components/main-register-space/main-register-space.component';
 import { RegisterComponent } from './components/main-register-space/register/register.component';
 import { MainSpaceStoryComponent } from './components/main-space-story/main-space-story.component';
-import { AuthGuard } from './services/authentification/auth.guard';
+import { AuthGuard } from './services/authentification/authGuard/auth.guard';
 import { MainSpaceMessengerComponent } from './components/main-space-messenger/main-space-messenger.component';
 import { MainSpaceProfileComponent } from './components/main-space-profile/main-space-profile.component';
 import { PublicationComponent } from './layout/cards/publication/publication.component';
