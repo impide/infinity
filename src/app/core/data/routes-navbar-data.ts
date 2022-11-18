@@ -3,10 +3,10 @@ export const NavbarRoutesData: NavbarRoutes[] = [
         navName: 'Story',
         routePath: '/main-space-story'
     },
-    {
-        navName: 'Discover',
-        routePath: ''
-    },
+    // {
+    //     navName: 'Discover',
+    //     routePath: ''
+    // },
     {
         navName: 'Messenger',
         routePath: '/main-space-messenger'

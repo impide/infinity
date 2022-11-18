@@ -1,15 +1,16 @@
 import { Injectable } from "@angular/core";
-import { AuthService } from "src/app/services/authentification/auth.service";
+import { AuthService } from "src/app/services/authentification/authAPI/auth.service";
+import { AuthData } from "src/app/services/authentification/authData/auth.data";
 
 @Injectable({ providedIn: 'root' })
 export class ProfileSettings {
-    constructor(private authService: AuthService) { }
+    constructor(private authData: AuthData) { }
 
 
     ProfileSettingData: ProfileSetting[] = [{
         infosClass: 'bi-person-lines-fill',
         inputType: 'text',
-        inputValue: this.authService.getCurrentUsername()
+        inputValue: this.authData.getCurrentUsername()
     },
     {
         infosClass: 'bi-shield-lock',
@@ -19,7 +20,7 @@ export class ProfileSettings {
     {
         infosClass: 'bi-envelope',
         inputType: 'text',
-        inputValue: this.authService.getCurrentEmail()
+        inputValue: this.authData.getCurrentEmail()
     }];
 
 
