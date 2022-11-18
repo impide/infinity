@@ -1,7 +1,7 @@
 <!-- Header Sidebar -->
 <div class="header-sidebar d-flex justify-content-between align-items-center p-3">
     <div class="avatar">
-        <img class="w-100 h-100" [src]="authService.getCurrentAvatar()" alt="Avatar">
+        <img class="w-100 h-100" [src]="authData.getCurrentAvatar()" alt="Avatar">
     </div>
     <div class="setting-header">
         <i class="bi bi-app-indicator"></i>
@@ -23,7 +23,7 @@
                 Lists of Users on Infinite
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="newUser-panel col-12 d-flex align-items-center" *ngFor="let user of newUsers">
+        <div class="newUser-panel col-12 d-flex align-items-center" *ngFor="let user of (filteredUsers$ | async)">
             <div class="avatar mx-3 col-3">
                 <img class="w-100 h-100" [src]="user.avatar" />
             </div>
@@ -42,7 +42,7 @@
                 Lists of Friends on Infinite
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="newUser-panel col-12 d-flex align-items-center" *ngFor="let friend of friendsLists">
+        <div class="newUser-panel col-12 d-flex align-items-center" *ngFor="let friend of (filteredFriends$ | async)">
             <div class="avatar mx-3 col-3">
                 <img class="w-100 h-100" [src]="friend.avatar" />
             </div>

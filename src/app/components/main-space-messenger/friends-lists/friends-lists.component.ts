@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserModel } from 'src/app/models/User/user.model';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 
 @Component({
   selector: 'app-friends-lists',
@@ -10,20 +11,18 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./friends-lists.component.scss']
 })
 export class FriendsListsComponent implements OnInit {
-  // Users Subscription
-  newUsersSub: Subscription;
-  newUsers: UserModel[];
-
-  // Friends Subscription
-  friendsLists: { username: string, avatar: string, userId: string }[] = [];
+  // Filtered users & Filtered friends
+  filteredUsers$: Observable<UserModel[]>;
+  filteredFriends$: Observable<[{ username: string, avatar: string, userId: string }]>;
 
   // Filter Users on Search bar
   searchText: string;
 
   // Mat Expansion
-  panelOpenState = false;
+  panelOpenState: boolean = false;
 
   constructor(
+    public authData: AuthData,
     public authService: AuthService,
     public router: Router
   ) { }
@@ -31,14 +30,8 @@ export class FriendsListsComponent implements OnInit {
   ngOnInit(): void {
     // Get all Users
     this.authService.getAllUsers();
-    this.newUsersSub = this.authService.users$.subscribe(
-      (users: UserModel[]) => {
-        // Filtered Users lists without current User
-        this.newUsers = users.filter(x => x._id !== this.authService.getCurrentUserId());
-        // Filtered Users friends-lists of current User
-        this.friendsLists = users.filter(x => x._id === this.authService.getCurrentUserId())[0].friends;
-      }
-    )
+    this.filteredUsers$ = this.authData.getFilteredUsers();
+    this.filteredFriends$ = this.authData.getFilteredFriends();
   }
 
   // Go to target Profile User
