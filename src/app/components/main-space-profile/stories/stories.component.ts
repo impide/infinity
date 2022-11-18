@@ -1,64 +1,56 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AddStoriesComponent } from 'src/app/layout/modal/add-stories/add-stories.component';
 import { UpdateStoriesComponent } from 'src/app/layout/modal/update-stories/update-stories.component';
 import { ViewStoriesComponent } from 'src/app/layout/modal/view-stories/view-stories.component';
 import { StorieModel } from 'src/app/models/Storie/storie.model';
-import { AuthService } from 'src/app/services/authentification/auth.service';
-import { StorieService } from 'src/app/services/storie/storie.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
+import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';
+import { StorieData } from 'src/app/services/storie/storieData/storie.data';
 
 @Component({
   selector: 'app-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.scss']
 })
-export class StoriesComponent implements OnInit, OnDestroy {
-
-  storiesSub: Subscription;
-  stories: StorieModel[] = [];
-  allstories: StorieModel[] = [];
+export class StoriesComponent implements OnInit {
+  // Stories
+  stories$: Observable<StorieModel[]>;
 
   constructor(
     public dialog: MatDialog,
-    private storiesService: StorieService,
-    private authService: AuthService
+    public authData: AuthData,
+    public storieData: StorieData,
+    private storiesService: StorieService
   ) { }
 
   ngOnInit(): void {
-    // Retrieve Stories
+    /* Stories API */
     this.storiesService.getStories();
-    this.storiesSub = this.storiesService.stories$.subscribe(
-      (stories: StorieModel[]) => {
-        const filteredStories = stories.filter(stories => stories.userId === this.authService.getCurrentUserId());
-        // Retrieve all Stories for other method working
-        this.allstories = filteredStories;
-        // Show only unique Stories Category
-        this.stories = filteredStories.filter((value, index, self) =>
-          index === self.findIndex((x) => (x.category === value.category)));
-      }
-    )
+    /* Observable */
+    this.stories$ = this.storieData.getFilteredStories();
   }
 
-  // Open Modal for view current Storie
+  // Current storie view 
   onViewStories(category: string): void {
+    this.storieData.getFilteredValuesCategories(category);
+
     const dialogRef = this.dialog.open(ViewStoriesComponent, {
       panelClass: ['col-12', 'col-sm-8', 'col-md-6', 'col-lg-5', 'col-xl-4', 'col-xxl-4', 'animate__animated', 'animate__slideInUp', 'custom-dialog-container'],
       data: {
-        storiesCategories: this.allstories.filter(x => x.category === category)
+        storiesCategories: this.storieData.storiesValues
       }
     });
 
-    // Init values after closed
+    // Init progress after closed
     dialogRef.afterClosed().subscribe(() => {
       clearInterval(this.storiesService.interval);
-      for (let i = 0; i < this.allstories.length; i++) {
-        this.allstories[i].progress = 0;
-      }
+      this.storieData.resetProgressStories();
     });
   }
 
-  // Open Modal for add new Storie
+  // Add new storie
   onAddStories(): void {
     this.dialog.open(AddStoriesComponent, {
       panelClass: ['col-12', 'col-sm-8', 'col-md-6', 'col-lg-5', 'col-xl-4', 'col-xxl-4', 'animate__animated', 'animate__slideInUp'],
@@ -66,27 +58,16 @@ export class StoriesComponent implements OnInit, OnDestroy {
     })
   }
 
-  // Open Modal for delete or add Storie on a existing category
+  // Delete or add storie on existing category
   onUpdateStories(): void {
     this.dialog.open(UpdateStoriesComponent, {
       panelClass: ['col-12', 'col-sm-8', 'col-md-6', 'col-lg-5', 'col-xl-4', 'col-xxl-4', 'animate__animated', 'animate__slideInUp'],
-      autoFocus: false,
-      data: {
-        stories: this.allstories
-      }
+      autoFocus: false
     })
-  }
-
-  ngOnDestroy(): void {
-    this.storiesSub.unsubscribe();
   }
 
 }
 
 export interface StorieViewModal {
   storiesCategories: StorieModel[];
-}
-
-export interface UpdateStories {
-  stories: StorieModel[];
 }

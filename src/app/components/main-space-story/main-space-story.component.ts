@@ -5,7 +5,8 @@ import { AddPostComponent } from 'src/app/layout/modal/add-post/add-post.compone
 import { DeletePostComponent } from 'src/app/layout/modal/delete-post/delete-post.component';
 import { ViewPostComponent } from 'src/app/layout/modal/view-post/view-post.component';
 import { LikeModel, PostModel } from 'src/app/models/Post/post.model';
-import { AuthService } from 'src/app/services/authentification/auth.service';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class MainSpaceStoryComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    public authData: AuthData,
     public authService: AuthService,
     private postService: PostService
   ) { }
@@ -38,7 +40,7 @@ export class MainSpaceStoryComponent implements OnInit {
   // Like a Post
   onLikePost(post: PostModel) {
     const userId = new LikeModel();
-    userId.userId = this.authService.getCurrentUserId();
+    userId.userId = this.authData.getCurrentUserId();
     this.postService.addOneLike(post, userId);
   }
 

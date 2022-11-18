@@ -3,7 +3,7 @@
                 class="bi bi-pencil-square"></i></span></h3>
     <hr>
     <div class="add-stories d-flex">
-        <div class="stories me-4" *ngFor="let storie of stories" (click)="onViewStories(storie.category)">
+        <div class="stories me-4" *ngFor="let storie of (stories$ | async)" (click)="onViewStories(storie.category)">
             <img class="w-100 h-100" [src]="storie.image" alt="storie.title">
             <p class="text-center">{{storie.category}}</p>
         </div>

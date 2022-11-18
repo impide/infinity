@@ -17,7 +17,6 @@
             </div>
         </div>
     </div>
-
     <!-- Masonry -->
     <div class="row w-100">
         <div class="col-12">
@@ -49,8 +48,8 @@
                         <!-- Footer (Like) -->
                         <div class="cards-footer">
                             <i class="bi bi-heart-fill" (click)="onLikePost(post)" [ngClass]="{
-                                'bi-heart-fill-active': post.likes.includes(authService.getCurrentUserId()), 
-                                'bi-heart-fill-no-active': !(post.likes.includes(authService.getCurrentUserId()))}">
+                                'bi-heart-fill-active': post.likes.includes(authData.getCurrentUserId()), 
+                                'bi-heart-fill-no-active': !(post.likes.includes(authData.getCurrentUserId()))}">
                             </i>
                         </div>
                     </div>
@@ -58,6 +57,4 @@
             </ngx-masonry>
         </div>
     </div>
-
-
 </div>
