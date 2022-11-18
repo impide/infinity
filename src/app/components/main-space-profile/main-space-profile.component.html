@@ -1,15 +1,15 @@
 <!-- Main Profile Space (Current User) -->
-<div class="main-space-profile" *ngIf="(router.url.includes(authService.getCurrentUserId()))">
+<div class="main-space-profile" *ngIf="(router.url.includes(authData.getCurrentUserId()))">
     <!-- My Current Profile -->
     <div class="background_defaultCover w-100">
         <img class="w-100 h-100" src="../../../assets/images/CoverProfile.png" alt="Cover">
         <!-- Pseudo -->
         <div class="pseudo-user">
-            <span>{{ authService.getCurrentUsername() }}</span>
+            <span>{{ authData.getCurrentUsername() }}</span>
         </div>
         <!-- Avatar -->
         <div class="avatar-user">
-            <img class="w-100 h-100" [src]="authService.getCurrentAvatar()" alt="Avatar">
+            <img class="w-100 h-100" [src]="authData.getCurrentAvatar()" alt="Avatar">
         </div>
     </div>
 
@@ -57,7 +57,7 @@
 </div>
 
 <!-- Main Profile Space (Target User) -->
-<div class="main-space-profile" *ngIf="!(router.url.includes(authService.getCurrentUserId()))">
+<div class="main-space-profile" *ngIf="!(router.url.includes(authData.getCurrentUserId()))">
     <!-- My Current Profile -->
     <div class="background_defaultCover w-100">
         <img class="w-100 h-100" src="../../../assets/images/CoverProfile.png" alt="Cover">

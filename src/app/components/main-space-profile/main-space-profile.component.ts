@@ -7,7 +7,8 @@ import { ProfileRoutes, ProfileRoutesData } from 'src/app/core/data/routes-profi
 import { AddPostComponent } from 'src/app/layout/modal/add-post/add-post.component';
 import { NotifModel } from 'src/app/models/Notif/notif.model';
 import { UserModel } from 'src/app/models/User/user.model';
-import { AuthService } from 'src/app/services/authentification/auth.service';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
@@ -35,9 +36,10 @@ export class MainSpaceProfileComponent implements OnInit, OnDestroy {
   requestButton: string;
 
   constructor(
-    public authService: AuthService,
     public router: Router,
     public dialog: MatDialog,
+    public authData: AuthData,
+    public authService: AuthService,
     private retrieveRoutesId: RetrieveRoutesId,
     private route: ActivatedRoute,
     private notifService: NotificationService
@@ -47,9 +49,9 @@ export class MainSpaceProfileComponent implements OnInit, OnDestroy {
     this.retrieveRouteData();
     this.retrieveNotificationData();
     this.retrieveUsersData();
-  }
+  };
 
-  retrieveRouteData() {
+  retrieveRouteData(): void {
     // Retrieve data Url in Route (Id & Username)
     this.routeSub = this.route.params.subscribe(params => {
       this.targetUserId = params['id'];
@@ -59,24 +61,23 @@ export class MainSpaceProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  retrieveNotificationData() {
+  retrieveNotificationData(): void {
     // Get all Notifications (To check if a friend request already exists for this user)
     this.notifService.getNotifications();
     this.notifsSub = this.notifService.notifs$.subscribe(
       (notifs: NotifModel[]) => {
         // Here, we Search if the Current User has Create any Request (Filtering by his Id)
-        const currentNotif = notifs.filter(x => x.requestCreateById === this.authService.getCurrentUserId());
+        const currentNotif = notifs.filter(x => x.requestCreateById === this.authData.getCurrentUserId());
         // Last, we Check if a Request at least been sent (Filtering by Target Id)
         if ((currentNotif.filter(x => x.requestReceiverId === this.targetUserId)).length > 0) {
           // Set the State of Request
           this.requestButton = 'Pending';
-          console.log('Step 1');
         }
       }
     )
   }
 
-  retrieveUsersData() {
+  retrieveUsersData(): void {
     // Get all Users (To check if this Users are already friends)
     this.authService.getAllUsers();
     this.usersSub = this.authService.users$.subscribe(
@@ -88,17 +89,15 @@ export class MainSpaceProfileComponent implements OnInit, OnDestroy {
           return;
         }
         // Else, Retrieve the data of current User connected
-        this.users = users.filter(x => x._id === this.authService.getCurrentUserId());
+        this.users = users.filter(x => x._id === this.authData.getCurrentUserId());
         // We filtered the previous data for check if target User Profile was already friend
         for (let i = 0; i < this.users.filter(x => x.friends).length; i++) {
           const filteredFriends = this.users.filter(x => x.friends[i]?.username === this.targetUsername);
           if (filteredFriends.length > 0) {
             // Set the State of Request
             this.requestButton = 'Already Friend';
-            console.log('Step 2');
           } else {
             this.requestButton = 'Add Friend';
-            console.log('Step 3');
           }
         }
       }
@@ -106,19 +105,19 @@ export class MainSpaceProfileComponent implements OnInit, OnDestroy {
   }
 
   // Make a Friend Request
-  onAddFriend() {
+  onAddFriend(): void {
     // Construct the Notification Model
     const requestData = new NotifModel();
-    requestData.requestCreateBy = this.authService.getCurrentUsername();
-    requestData.requestCreateById = this.authService.getCurrentUserId();
-    requestData.requestCreateByAvatar = this.authService.getCurrentAvatar();
+    requestData.requestCreateBy = this.authData.getCurrentUsername();
+    requestData.requestCreateById = this.authData.getCurrentUserId();
+    requestData.requestCreateByAvatar = this.authData.getCurrentAvatar();
     requestData.requestReceiverId = this.targetUserId;
     requestData.typeOfRequest = 'FriendRequest';
     this.notifService.requestOneFriend(requestData, this.targetUserId);
   }
 
   // Create a new Post
-  onCreatePost() {
+  onCreatePost(): void {
     this.dialog.open(AddPostComponent, {
       panelClass: ['col-4']
     });
