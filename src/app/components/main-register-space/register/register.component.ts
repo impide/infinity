@@ -20,17 +20,17 @@ export class RegisterComponent implements OnInit {
   }
 
   // Transition Sign in to Log in
-  tologIn() {
+  tologIn(): void {
     this.stateRegister.toLoginState();
   }
 
   // Transition Log in to Sign in
-  tosignIn() {
+  tosignIn(): void {
     this.stateRegister.toSignInState();
   }
 
   // Close
-  closeModal() {
+  closeModal(): void {
     this.dialog.closeAll();
   }
 

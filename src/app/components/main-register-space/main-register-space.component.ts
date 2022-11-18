@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/authentification/auth.service';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 
 @Component({
   selector: 'app-main-register-space',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/authentification/auth.service';
 })
 export class MainRegisterSpaceComponent implements OnInit {
   // Observable Authentification
-  isAuth$ = this.authService.isAuth$.asObservable();
+  isAuth$: Observable<boolean> = this.authService.isAuth$.asObservable();
 
   constructor(private authService: AuthService) { }
 
