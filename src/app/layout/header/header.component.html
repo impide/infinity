@@ -3,7 +3,7 @@
     <div class="container-fluid d-flex justify-content-between">
         <div class="col-4 d-flex">
             <!-- Brand -->
-            <a class="navbar-brand">Infinite</a>
+            <a class="navbar-brand" [routerLink]="['/']">Infinite</a>
             <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -12,15 +12,15 @@
             <!-- Section Tab -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item" *ngFor="let tab of tablists">
-                        <a class="nav-link" [routerLink]="[tab.route]">{{ tab.tabName }}</a>
+                    <li class="nav-item" *ngFor="let route of navbarRoutes">
+                        <a class="nav-link" [routerLink]="[route.routePath]">{{ route.navName }}</a>
                     </li>
                 </ul>
             </div>
         </div>
         <!-- Username / Avatar / Power Button -->
         <div class="col-4">
-
+            <app-user-profile></app-user-profile>
         </div>
     </div>
 </nav>

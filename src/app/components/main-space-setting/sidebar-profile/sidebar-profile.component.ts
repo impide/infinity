@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceLanguage } from 'src/app/core/data/retrieve-languages-data';
 import { ProfileSettings } from 'src/app/core/data/retrieve-profile-setting-data';
-import { AuthService } from 'src/app/services/authentification/auth.service';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 
 @Component({
   selector: 'app-sidebar-profile',
@@ -17,6 +18,7 @@ export class SidebarProfileComponent implements OnInit {
   selectedLanguage = this.interfaceLanguage[0].language;
 
   constructor(
+    public authData: AuthData,
     public authService: AuthService,
     public profileSettingService: ProfileSettings
   ) { }
@@ -25,7 +27,7 @@ export class SidebarProfileComponent implements OnInit {
 
   onUpdateAvatar() {
     if (!this.selectedImageFile) return;
-    const id = this.authService.getCurrentUserId();
+    const id = this.authData.getCurrentUserId();
     this.authService.updateOneAvatar(id, this.selectedImageFile);
   }
 

@@ -1,7 +1,7 @@
 <!-- Sidebar Profile -->
 <div class="avatar mx-auto mt-5">
     <label for="file">
-        <img id="post-preview-image" [src]="authService.getCurrentAvatar()" alt="Avatar">
+        <img id="post-preview-image" [src]="authData.getCurrentAvatar()" alt="Avatar">
     </label>
     <input class="d-none" #photoSelector (change)="onPhotoSelected(photoSelector)" accept="image/*" type="file"
         id="file">

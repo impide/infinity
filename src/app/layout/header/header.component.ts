@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarRoutes, NavbarRoutesData } from 'src/app/core/data/routes-navbar-data';
 
 @Component({
   selector: 'app-header',
@@ -7,20 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  // Routes Navbar
+  navbarRoutes: NavbarRoutes[] = NavbarRoutesData;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  tablists: tabLists[] = [
-    { tabName: 'Feed', route: '/main-home/main-story-space' },
-    { tabName: 'Disover', route: '' },
-    { tabName: 'Messenger', route: '' }
-  ]
-
-}
-
-export interface tabLists {
-  tabName: string;
-  route: string;
 }
