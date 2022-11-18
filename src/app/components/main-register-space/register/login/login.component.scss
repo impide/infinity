@@ -18,6 +18,15 @@ input::placeholder {
     box-shadow: none;
 }
 
+.password .bi-eye-slash,
+.password .bi-eye {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 30px;
+    cursor: pointer;
+}
+
 .forgPass {
     font-size: 14px;
     color: #000;

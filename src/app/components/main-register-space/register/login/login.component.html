@@ -16,16 +16,17 @@
     </div>
     <!-- Password -->
     <div class="row">
-        <div class="form-group">
+        <div class="form-group password position-relative">
             <label for="password"></label>
             <input 
-            type="password" 
+            [type]="showPassword ? 'text': 'password'" 
             class="form-control" 
             placeholder="Password" 
             name="password" 
             ngModel 
             required
             #password="ngModel">
+            <i [ngClass]="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash'" (click)="onShowPassword()"></i>
         </div>
     </div>
     <!-- Forgot Password -->
