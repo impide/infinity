@@ -1,1 +1,20 @@
-<p>add-post works!</p>
+<!-- Create a Post -->
+<h1 mat-dialog-title>Create a Post</h1>
+<!-- Text - Image -->
+<textarea #commentInput maxlength="300" class="w-100" name="text" id="text" cols="30" rows="5"
+    placeholder="Type message..."></textarea>
+<div *ngIf="selectedImageFile" class="px-2 mx-auto" id="post-preview">
+    <img id="post-preview-image" class="w-100 h-100" src="#" alt="image">
+</div>
+<!-- Input -->
+<div mat-dialog-actions align="end" class="action mb-1">
+    <button class="btn pt-0">
+        <label for="photo_upload">
+            <input #photoSelector (change)="onPhotoSelected(photoSelector)" id="photo_upload" type="file"
+                accept="image/*">
+            <mat-icon class="text-custom">insert_photo</mat-icon>
+        </label>
+    </button>
+    <!-- Submit -->
+    <button class="btn btn-custom" (click)="onCreatePost(commentInput)">Post</button>
+</div>

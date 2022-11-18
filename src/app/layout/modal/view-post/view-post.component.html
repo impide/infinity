@@ -1,1 +1,53 @@
-<p>view-post works!</p>
+<!-- Modal Publication -->
+<div class="row w-100">
+    <div class="card-container col-12 d-flex justify-content-between">
+        <!-- Image -->
+        <div class="col-7 publication">
+            <img [src]="image" class="w-100 h-100" alt="Publication">
+        </div>
+        <!-- Comment -->
+        <div class="col-4 position-relative">
+            <div class="setting">
+                <p class="m-0 text-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-three-dots" viewBox="0 0 16 16">
+                        <path
+                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                </p>
+            </div>
+            <div class="currentUser p-2 mb-2 d-flex justify-content-between">
+                <div class="avatar">
+                    <img class="me-2" [src]="avatarCreator" style="width: 35px;height: 35px;" alt="Avatar">
+                    <span class="text-white">{{creator}}</span>
+                </div>
+            </div>
+            <div class="description">
+                <span>
+                    {{content}}
+                </span>
+            </div>
+            <hr>
+            <!-- Comment Input -->
+            <div class="row">
+                <div id="reply-box">
+                    <div *ngFor="let comment of comments" [ngClass]="{'comment-container': true}">
+                        <div>
+                            <p class="comment-name">{{comment?.creator}}</p>
+                            <p [ngClass]="{'comment': true, 'creator-comment': isCommentCreator(comment)}">
+                                {{comment?.comment}}</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="comment-form">
+                    <mat-form-field class="comment-full-width" appearance="fill">
+                        <mat-label>Comment</mat-label>
+                        <input type="text" matInput #commentInput autocomplete="off">
+                        <mat-icon matSuffix class="send-icon text-custom" (click)="onAddComment(commentInput)">send
+                        </mat-icon>
+                    </mat-form-field>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
