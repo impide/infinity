@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { catchError, EMPTY, finalize, map, Observable } from "rxjs";
+import { Injectable, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
 import { StorieModel } from "src/app/models/Storie/storie.model";
 import { AuthData } from "../../authentification/authData/auth.data";
 import { StorieService } from "../storieAPI/storie.service";
@@ -7,11 +7,10 @@ import { StorieService } from "../storieAPI/storie.service";
 @Injectable({
     providedIn: 'root'
 })
-export class StorieData {
-    // Values (View Component)
+export class StorieData implements OnDestroy {
+    // Stories Variable
+    storiesSub: Subscription;
     storiesValues: StorieModel[];
-    // Length
-    storiesLength: number;
 
     constructor(
         public storieAPI: StorieService,
@@ -19,97 +18,39 @@ export class StorieData {
     ) { }
 
     // Stories of current User
-    getFilteredStories(): Observable<StorieModel[]> {
-        return this.storieAPI.stories$.pipe(
-            catchError(error => {
-                console.error(error);
-                return EMPTY;
-            }),
-            finalize(() => {
-                console.log('Filtered Users Done');
-            }),
-            map(
-                stories => stories.filter(storie => storie.userId === this.authData.getCurrentUserId())
-            )
-        );
+    getStories() {
+        this.storiesSub = this.storieAPI.stories$.subscribe(
+            {
+                next: (result) => {
+                    this.storiesValues = result.filter((storie => storie.userId === this.authData.getCurrentUserId()));
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            }
+        )
     };
 
-    // Stories.length of current User
-    getFilteredLength(): Observable<number> {
-        return this.storieAPI.stories$.pipe(
-            catchError(error => {
-                console.error(error);
-                return EMPTY;
-            }),
-            finalize(() => {
-                console.log('Filtered Users Done');
-            }),
-            map(stories => this.storiesLength = stories.length)
-        );
+    // Get Stories of current Category 
+    getCategory(category: string): StorieModel[] {
+        return this.storiesValues.filter((storie => storie.category === category));
     };
 
-    // Stories.categories of current User
-    getFilteredValuesCategories(category: string) {
-        return this.getFilteredStories().pipe(
-            catchError(error => {
-                console.error(error);
-                return EMPTY;
-            }),
-            finalize(() => {
-                console.log('Filtered Users Done');
-            }),
-            map(
-                stories => this.storiesValues = stories.filter(storie => storie.category === category)
-            )
-        );
+    // Get Stories unique Category
+    getUniqueCategories(): StorieModel[] {
+        return this.storiesValues.filter((value, index, self) =>
+            index === self.findIndex((storie) => (storie.category === value.category)));
+    }
+
+    // Reset Progress of all Stories (current user)
+    resetProgress(): void {
+        return this.storiesValues.forEach((storie => storie.progress = 0));
     };
 
-    // Unique Stories.categories
-    getUniqStoriesCategories(): Observable<StorieModel[]> {
-        return this.getFilteredStories().pipe(
-            catchError(error => {
-                console.error(error);
-                return EMPTY;
-            }),
-            finalize(() => {
-                console.log('Filtered Users Done');
-            }),
-            map(
-                stories => stories.filter((value, index, self) =>
-                    index === self.findIndex((x) => (x.category === value.category)))
-            )
-        );
-    };
-
-    // Stories.categories (selected)
-    getFilteredCategories(category: string): Observable<StorieModel[]> {
-        return this.getFilteredStories().pipe(
-            catchError(error => {
-                console.error(error);
-                return EMPTY;
-            }),
-            finalize(() => {
-                console.log('Filtered Users Done');
-            }),
-            map(
-                stories => stories.filter(storie => storie.category === category)
-            )
-        );
-    };
-
-    resetProgressStories(): Observable<void> {
-        return this.getFilteredStories().pipe(
-            catchError(error => {
-                console.error(error);
-                return EMPTY;
-            }),
-            finalize(() => {
-                console.log('Filtered Users Done');
-            }),
-            map(
-                stories => stories.forEach((storie => storie.progress = 0))
-            )
-        );
-    };
+    ngOnDestroy() {
+        if (this.storiesSub != null) {
+            this.storiesSub.unsubscribe();
+        }
+    }
 
 }

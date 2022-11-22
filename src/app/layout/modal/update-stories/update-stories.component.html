@@ -17,7 +17,7 @@
             <mat-form-field appearance="fill" class="w-100">
                 <mat-label>Choose Category</mat-label>
                 <mat-select [(ngModel)]="selectedCategory">
-                    <mat-option *ngFor="let unique of (uniqueCategories$ | async)" [value]="unique.category">
+                    <mat-option *ngFor="let unique of storieData.getUniqueCategories()" [value]="unique.category">
                         {{unique.category}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -46,7 +46,7 @@
             <mat-form-field appearance="fill" class="w-100">
                 <mat-label>Choose Category</mat-label>
                 <mat-select [(ngModel)]="selectedCategory">
-                    <mat-option *ngFor="let unique of (uniqueCategories$ | async)" [value]="unique.category">
+                    <mat-option *ngFor="let unique of storieData.getUniqueCategories()" [value]="unique.category">
                         {{unique.category}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -60,7 +60,7 @@
             </mat-form-field>
             <ul class="lists-stories d-flex justify-content-between w-100 px-0 pb-2" *ngIf="selectedCategory">
                 <li class="list-storie w-100 me-2"
-                    *ngFor="let storie of (filteredCategory(selectedCategory) | async); let i = index">
+                    *ngFor="let storie of filteredCategory(selectedCategory); let i = index">
                     <img [src]="storie.image" alt="Image">
                     <mat-radio-button class="w-100 mt-3" [value]="i" (click)="selectedOneStorie(storie)"
                         *ngIf="selectedNumber === 'one'">

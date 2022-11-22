@@ -14,6 +14,9 @@ export class ViewStoriesComponent implements OnInit {
   // Index Image 
   indexImage: number = 0;
 
+  // Categories Length
+  categoriesLength: number = this.importedStorieData.storiesCategories.length;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public importedStorieData: StorieViewModal,
     public storieData: StorieData,
@@ -22,53 +25,57 @@ export class ViewStoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.importedStorieData);
-    this.storieData.getFilteredLength();
     this.proceedAnimationStorie();
   }
 
   // Lecture Storie(s)
   proceedAnimationStorie() {
-    /* Condition for one Storie => */
-    if (this.storieData.storiesLength <= 1) {
-      const currentStories: StorieModel[] = this.importedStorieData.storiesCategories;
-
-      this.storiesService.interval = setInterval(() => {
-        currentStories[0].progress += 1;
-        /* Storie => Progress Completed & Clean up */
-        if (currentStories[0].progress >= 105) {
-          clearInterval(this.storiesService.interval);
-          currentStories[0].progress = 0;
-          this.dialog.closeAll();
-        }
-      }, 50)
-
+    if (this.categoriesLength <= 1) {
+      this.animateOneStorie();
     } else {
-      /* Condition for many Stories => */
-      let currentIndex: number = 0;
-      const currentStorie: StorieModel[] = this.importedStorieData.storiesCategories;
-      let totalLength: number = this.storieData.storiesLength;
-
-      this.storiesService.interval = setInterval(() => {
-        // Controls => Manage error & Clean up Before anything else 
-        if (currentIndex === totalLength) {
-          clearInterval(this.storiesService.interval);
-          for (let i = 0; i < currentStorie.length; i++) {
-            currentStorie[i].progress = 0;
-          }
-          this.dialog.closeAll();
-          return;
-        }
-
-        /* Storie => Progress Completed & Clean up */
-        currentStorie[currentIndex].progress += 1;
-        if (currentStorie[currentIndex].progress >= 105) {
-          currentIndex++;
-          this.indexImage++;
-        }
-      }, 50);
+      this.animateMultipleStories();
     }
   }
 
+  /* Condition for one Storie => */
+  animateOneStorie(): void {
+    const currentStories: StorieModel[] = this.importedStorieData.storiesCategories;
+
+    this.storiesService.interval = setInterval(() => {
+      currentStories[0].progress += 1;
+      /* Storie => Progress Completed & Clean up */
+      if (currentStories[0].progress >= 105) {
+        clearInterval(this.storiesService.interval);
+        currentStories[0].progress = 0;
+        this.dialog.closeAll();
+      }
+    }, 50)
+  }
+
+  /* Condition for many Stories => */
+  animateMultipleStories(): void {
+    let currentIndex: number = 0;
+    const currentStorie: StorieModel[] = this.importedStorieData.storiesCategories;
+    let totalLength: number = this.categoriesLength;
+
+    this.storiesService.interval = setInterval(() => {
+      // Controls => Manage error & Clean up Before anything else 
+      if (currentIndex === totalLength) {
+        clearInterval(this.storiesService.interval);
+        for (let i = 0; i < currentStorie.length; i++) {
+          currentStorie[i].progress = 0;
+        }
+        this.dialog.closeAll();
+        return;
+      }
+
+      /* Storie => Progress Completed & Clean up */
+      currentStorie[currentIndex].progress += 1;
+      if (currentStorie[currentIndex].progress >= 105) {
+        currentIndex++;
+        this.indexImage++;
+      }
+    }, 50);
+  }
 
 }

@@ -15,38 +15,35 @@ import { StorieData } from 'src/app/services/storie/storieData/storie.data';
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent implements OnInit {
-  // Stories
   stories$: Observable<StorieModel[]>;
 
   constructor(
     public dialog: MatDialog,
     public authData: AuthData,
     public storieData: StorieData,
-    private storiesService: StorieService
+    private storiesAPI: StorieService
   ) { }
 
   ngOnInit(): void {
     /* Stories API */
-    this.storiesService.getStories();
-    /* Observable */
-    this.stories$ = this.storieData.getFilteredStories();
+    this.stories$ = this.storiesAPI.stories$;
+    this.storiesAPI.getStories();
+    this.storieData.getStories();
   }
 
   // Current storie view 
   onViewStories(category: string): void {
-    this.storieData.getFilteredValuesCategories(category);
-
     const dialogRef = this.dialog.open(ViewStoriesComponent, {
       panelClass: ['col-12', 'col-sm-8', 'col-md-6', 'col-lg-5', 'col-xl-4', 'col-xxl-4', 'animate__animated', 'animate__slideInUp', 'custom-dialog-container'],
       data: {
-        storiesCategories: this.storieData.storiesValues
+        storiesCategories: this.storieData.getCategory(category)
       }
     });
 
     // Init progress after closed
     dialogRef.afterClosed().subscribe(() => {
-      clearInterval(this.storiesService.interval);
-      this.storieData.resetProgressStories();
+      clearInterval(this.storiesAPI.interval);
+      this.storieData.resetProgress();
     });
   }
 

@@ -1,6 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { StorieModel } from 'src/app/models/Storie/storie.model';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';
@@ -12,9 +10,6 @@ import { StorieData } from 'src/app/services/storie/storieData/storie.data';
   styleUrls: ['./update-stories.component.scss']
 })
 export class UpdateStoriesComponent implements OnInit {
-  // Unique Stories
-  uniqueCategories$: Observable<StorieModel[]>;
-
   // Options
   optionsChoice: string;
 
@@ -34,10 +29,7 @@ export class UpdateStoriesComponent implements OnInit {
     private storiesService: StorieService
   ) { }
 
-  ngOnInit(): void {
-    // Retrieve Unique Storie Category
-    this.uniqueCategories$ = this.storieData.getUniqStoriesCategories();
-  }
+  ngOnInit(): void {}
 
   // Select a Option for updating
   chooseOption(option: string) {
@@ -85,8 +77,8 @@ export class UpdateStoriesComponent implements OnInit {
   };
 
   // Filtered Categories by Selection
-  filteredCategory(selectedCategory: string): Observable<StorieModel[]> {
-    return this.storieData.getFilteredCategories(selectedCategory);
+  filteredCategory(selectedCategory: string): StorieModel[] {
+    return this.storieData.getCategory(selectedCategory);
   };
 
   // Read File (image)
