@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NotificationService {
-
   // Auth Data
   private api = environment.api;
 
@@ -31,7 +30,7 @@ export class NotificationService {
       {
         next: (notifData: Data) => {
           this.notifs = notifData.result;
-          this.emitNotifs();
+          this.notifs$.next([...this.notifs]);
         },
         error: (notifData: Data) => {
           this.snackbar.openSnackBar(notifData.message, 5);
@@ -86,9 +85,5 @@ export class NotificationService {
       }
     )
 
-  }
-
-  emitNotifs() {
-    this.notifs$.next([...this.notifs]);
   }
 }
