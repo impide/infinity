@@ -17,21 +17,7 @@ visibilité ? Vous recherchez l'interaction et souhaitez découvrir d'autres cul
 
 ## Pour commencer
 
-1 - Commencer par Cloner ou Forker le projet :
-[Cloner un dépôt](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) /
-[Forker un dépôt](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
-
-2 - Lorsque vous êtes sur le projet, installez toutes les dépendances en exécutant depuis le terminal :
-
-```sh
-npm install
-```
-
-3 - Puis lancer le server en faisant :
-
-```sh
-ng start
-```
+Le projet est actuellement en cours d'amélioration, la partie Back sera fournie ultérieurement de ce fait, l'utilisation du repo est déconseiller pour le moment. Mais il est tout à fait possible de cloner le projet pour étudier le code.
 
 ## Objectifs à long terme
 
