@@ -45,3 +45,6 @@ Thumbs.db
 /backend
 /src/.env
 /src/environments/*
+
+#Front-end
+.env

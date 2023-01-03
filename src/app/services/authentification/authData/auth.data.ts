@@ -8,7 +8,8 @@ import { AuthService } from "../authAPI/auth.service";
 })
 export class AuthData {
 
-    constructor(public authAPI: AuthService) { }
+    constructor(
+        private authAPI: AuthService) { }
 
     // Return Username of current User as Observable
     getCurrentUsername(): string {
@@ -17,6 +18,7 @@ export class AuthData {
 
     // Return Avatar of current User as Observable
     getCurrentAvatar(): string {
+        console.log(this.authAPI.currentUserData$.value.avatar);
         return this.authAPI.currentUserData$.value.avatar;
     };
 
@@ -65,6 +67,5 @@ export class AuthData {
                 users => users.filter(user => user._id === this.getCurrentUserId())[0].friends
             )
         )
-    }
-
+    };
 }

@@ -5,7 +5,7 @@ import { RegisterComponent } from 'src/app/components/main-register-space/regist
 import { NotifModel, RequestValidated } from 'src/app/models/Notif/notif.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
-import { NotificationService } from 'src/app/services/notification/notification.service';
+import { NotificationService } from 'src/app/services/notification/notificationAPI/notification.service';
 import { StateRegisterService } from '../../animation/register-animation';
 
 @Component({

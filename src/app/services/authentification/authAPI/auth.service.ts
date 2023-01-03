@@ -8,7 +8,7 @@ import { SnackBarService } from 'src/app/layout/snackbar/snackbar-service';
 import { Data } from 'src/app/models/Data/data.model';
 import { UserModel } from 'src/app/models/User/user.model';
 import { environment } from 'src/environments/environment';
-import { NotificationService } from '../../notification/notification.service';
+import { NotificationService } from '../../notification/notificationAPI/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -121,6 +121,8 @@ export class AuthService {
 
   // Update Avatar Profile
   updateOneAvatar(id: string, image: File) {
+    console.log(image);
+
     let userData: FormData = new FormData();
     userData.append('image', image);
     return this.http.put(this.api + '/users/' + id + '/update-avatar', userData).subscribe(
@@ -138,7 +140,7 @@ export class AuthService {
     )
   }
 
-  // Logout the User connected 
+  // Logout the User connected
   logout(): void {
     /* Delete all Local Storage Data */
     this.isAuth$.next(false);
