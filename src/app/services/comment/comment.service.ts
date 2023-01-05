@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CommentService {
-
   // Auth Data
   private api = environment.api;
 

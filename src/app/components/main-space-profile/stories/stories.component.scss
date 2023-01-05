@@ -1,40 +1,43 @@
 // Stories Container
 .stories-container {
-    span {
-        background: -webkit-linear-gradient(#174AB3,#4432B2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 400;
-        cursor: pointer;
+  span {
+    background: -webkit-linear-gradient(#174ab3, #4432b2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+    cursor: pointer;
 
-        .bi-pencil-square {
-            font-size: 20px;
-            cursor: pointer;
-        }
+    .bi-pencil-square {
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+
+  .add-stories .stories {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #174ab3, #4432b2);
+    cursor: pointer;
+
+    img {
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 2px solid transparent;
     }
 
-    .add-stories .stories {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        background: linear-gradient(90deg, #174AB3,#4432B2);
-        cursor: pointer;
-
-        img {
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center;
-            border: 2px solid transparent;
-        }
-
-        p {font-size: 15px;}
+    p {
+      font-size: 15px;
     }
+  }
 
-    .add-stories .bi-plus-circle-fill {
-        border-radius: 50%;
-        color: #fff;
-        border: 2px solid transparent;
-        background: linear-gradient(90deg, #174AB3,#4432B2, #0ba9da);
-        cursor: pointer;
-    }
+  .add-stories .bi-plus-circle-fill {
+    border-radius: 50%;
+    color: #fff;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, #174ab3, #4432b2, #0ba9da);
+    cursor: pointer;
+  }
 }

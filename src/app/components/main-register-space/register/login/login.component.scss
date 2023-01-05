@@ -1,44 +1,42 @@
-// Email - Password - Forgot Password
-input {
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid #2a2c41;
-    position: relative;
-    background: transparent;
-    margin-bottom: 1rem;
+.login-form input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #2a2c41;
+  position: relative;
+  background: transparent;
+  margin-bottom: 1rem;
 }
 
-input::placeholder {
-    color: #273A48;
+.login-form input::placeholder {
+  color: #273a48;
 }
 
-.form-control:focus {
-    border-color: #2a2c41;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+.login-form .form-control:focus {
+  border-color: #2a2c41;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
-.password .bi-eye-slash,
-.password .bi-eye {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    font-size: 30px;
-    cursor: pointer;
+.login-form .password .bi-eye-slash,
+.login-form .password .bi-eye {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 30px;
+  cursor: pointer;
 }
 
-.forgPass {
-    font-size: 14px;
-    color: #000;
+.login-form .forgPass {
+  font-size: 14px;
+  color: #000;
 }
 
-// Submit
-button {
-    border: none;
-    border-radius: 20px;
-    background: linear-gradient(45deg,#174AB3,#4432B2,#212529);
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 800;
-    margin-top: 9.7rem;
+.login-form button {
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #174ab3, #4432b2, #212529);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 9.7rem;
 }

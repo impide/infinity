@@ -59,7 +59,7 @@
                 <a class="dropdown-item" *ngIf="!(isAuth$|async)" (click)="onAuthToLog()">Login</a>
                 <a class="dropdown-item" *ngIf="!(isAuth$|async)" (click)="onAuthToSign()">Sign up</a>
                 <!-- After Login -->
-                <a class="dropdown-item" *ngIf="(isAuth$|async)">Let's Go</a>
+                <a class="dropdown-item" *ngIf="(isAuth$|async)" [routerLink]="['/main-space-story']">Let's Go</a>
                 <a class="dropdown-item" *ngIf="(isAuth$|async)" (click)="onLogout()">Log out</a>
             </div>
         </div>

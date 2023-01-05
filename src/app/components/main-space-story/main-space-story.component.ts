@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AddPostComponent } from 'src/app/layout/modal/add-post/add-post.component';
-import { DeletePostComponent } from 'src/app/layout/modal/delete-post/delete-post.component';
 import { ViewPostComponent } from 'src/app/layout/modal/view-post/view-post.component';
 import { LikeModel, PostModel } from 'src/app/models/Post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
@@ -15,8 +14,11 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./main-space-story.component.scss']
 })
 export class MainSpaceStoryComponent implements OnInit {
-  // Posts Observable
+  // Observables
+  isAuth$: Observable<boolean> = this.authService.isAuth$.asObservable();
   posts$: Observable<PostModel[]> = this.postService.posts$.asObservable();
+
+  userId: string;
 
   constructor(
     public dialog: MatDialog,
@@ -28,21 +30,22 @@ export class MainSpaceStoryComponent implements OnInit {
   ngOnInit(): void {
     // Get Posts
     this.postService.getPosts();
-  }
+    this.userId = this.authData.getCurrentUserId();
+  };
 
   // Create a Post
-  onCreatePost() {
+  onCreatePost(): void {
     this.dialog.open(AddPostComponent, {
       panelClass: ['col-4']
     });
-  }
+  };
 
   // Like a Post
   onLikePost(post: PostModel) {
     const userId = new LikeModel();
     userId.userId = this.authData.getCurrentUserId();
     this.postService.addOneLike(post, userId);
-  }
+  };
 
   // View Post in Modal
   onViewPost(post: PostModel) {
@@ -52,24 +55,14 @@ export class MainSpaceStoryComponent implements OnInit {
         postData: post
       }
     });
-  }
+  };
 
-  // Open Setting (Delete Post)
-  onOpenSetting(_id: string) {
-    this.dialog.open(DeletePostComponent, {
-      data: {
-        _id: _id
-      },
-      panelClass: ['col-4']
-    })
-  }
-
-}
+};
 
 export interface PostsModel {
   postData: PostModel
-}
+};
 
 export interface PostId {
   _id: string;
-}
+};

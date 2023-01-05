@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarSettingComponent } from './sidebar-setting.component';
+import { AddPostButtonComponent } from './add-post-button.component';
 
-describe('SidebarSettingComponent', () => {
-  let component: SidebarSettingComponent;
-  let fixture: ComponentFixture<SidebarSettingComponent>;
+describe('AddPostButtonComponent', () => {
+  let component: AddPostButtonComponent;
+  let fixture: ComponentFixture<AddPostButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarSettingComponent ]
+      declarations: [ AddPostButtonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SidebarSettingComponent);
+    fixture = TestBed.createComponent(AddPostButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

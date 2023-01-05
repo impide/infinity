@@ -1,105 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&display=swap");
 
 // Feed
 .header {
-    position: relative;
-    height: 72px;
-    background: url(../../../assets/images/Wave.png);
-    background-repeat: no-repeat;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+  position: relative;
+  height: 100px;
+  background: url(../../../assets/images/Wave.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 // Add Post
 .addPost {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    border-radius: 30px;
-    background: #fff;
-    cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 30px;
+  background: #fff;
+  cursor: pointer;
 }
 
 .containerAdd span {
-    font-family: 'Pacifico', cursive;
-    font-size: 20px;
+  font-family: "Pacifico", cursive;
+  font-size: 20px;
 }
 
 .bi-plus-circle-fill {
-    color: #5783fb;
-    transition: all .5s;
+  color: #5783fb;
+  transition: all 0.5s;
 }
 
 .addPost:hover .bi-plus-circle-fill {
-    color: #e74573;
-    transform: rotateZ(90deg);
+  color: #e74573;
+  transform: rotateZ(90deg);
 }
 
 // Post
 .cards {
-    position: relative;
+  position: relative;
+  box-sizing: 5px;
 
-    // Cards Header
-    .cards-header {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        right: 5px;
-        height: 100px;
-        background-color: rgba(0, 0, 0, 0.375);
-        opacity: 0;
-        transition: all .3s;
+  // Cards Header
+  .cards-header {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.375);
+    opacity: 0;
+    transition: all 0.3s;
+  }
 
-        .user-profile .avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            cursor: pointer;
+  // Cards Body
+  .cards-body {
+    border-radius: 5px;
+    cursor: pointer;
 
-            img {
-                border-radius: 50%;
-                object-fit: cover;
-                object-position: center;
-            }
-        }
-        .user-profile .creator {
-            color: #fff;
-            font-size: 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-family: 'Pacifico', cursive;
-        }
-
-        .setting .bi-three-dots {
-            font-size: 20px;
-            cursor: pointer;
-        }
+    img {
+      border-radius: 5px;
     }
+  }
 
-    // Cards Body
-    .cards-body {
-        cursor: pointer;
+  // Cards-Footer
+  .cards-footer {
+    position: absolute;
+    bottom: 5px;
+    right: 1rem;
+    opacity: 0;
+    transition: all 0.3s;
+
+    .bi-heart-fill-no-active {
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
     }
-
-    // Cards-Footer
-    .cards-footer {
-        position: absolute;
-        bottom: 5px;
-        right: 1rem;
-        opacity: 0;
-        transition: all .3s;
-
-        .bi-heart-fill-no-active {
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-        }
-        .bi-heart-fill-active {
-            font-size: 30px;
-            color: rgba(255, 0, 0, 0.600);
-            cursor: pointer;
-        }
+    .bi-heart-fill-active {
+      font-size: 30px;
+      color: rgba(255, 0, 0, 0.6);
+      cursor: pointer;
     }
+  }
 }
 
 .cards:hover .cards-header,
 .cards:hover .cards-footer {
-    opacity: 1;
+  opacity: 1;
 }

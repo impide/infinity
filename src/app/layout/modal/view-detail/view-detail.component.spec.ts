@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainSpaceDiscoverComponent } from './main-space-discover.component';
+import { ViewDetailComponent } from './view-detail.component';
 
-describe('MainSpaceDiscoverComponent', () => {
-  let component: MainSpaceDiscoverComponent;
-  let fixture: ComponentFixture<MainSpaceDiscoverComponent>;
+describe('ViewDetailComponent', () => {
+  let component: ViewDetailComponent;
+  let fixture: ComponentFixture<ViewDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainSpaceDiscoverComponent ]
+      declarations: [ ViewDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainSpaceDiscoverComponent);
+    fixture = TestBed.createComponent(ViewDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Post Details</h1>
+<hr>
+<div mat-dialog-content>
+  <ul class="details p-0">
+    <div class="details-author d-flex justify-content-between">
+      <li><span>Author</span> : </li>
+      <li>{{creator}}</li>
+    </div>
+    <div class="details-likes d-flex justify-content-between">
+      <li><span>Number of likes</span> : </li>
+      <li>{{likes}} like(s)</li>
+    </div>
+    <div class="details-date d-flex justify-content-between">
+      <li><span>Published at</span> : </li>
+      <li>{{date | date: 'dd/MM/yyyy'}}</li>
+    </div>
+  </ul>
+</div>
+<div mat-dialog-actions class="justify-content-end">
+  <button class="btn btn-primary m-2" (click)="onCloseModal()">Close</button>
+</div>

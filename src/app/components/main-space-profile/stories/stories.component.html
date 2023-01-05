@@ -1,16 +1,32 @@
+<!-- Stories -->
 <div class="stories-container">
-    <h3 class="mb-2">Stories | <span (click)="onUpdateStories()">Current Category <i
-                class="bi bi-pencil-square"></i></span></h3>
-    <hr>
-    <div class="add-stories d-flex" *ngIf="(stories$ | async)">
-        <div class="stories me-4" *ngFor="let storie of storieData.getUniqueCategories()" (click)="onViewStories(storie.category)">
-            <img class="w-100 h-100" [src]="storie.image" alt="storie.title">
-            <p class="text-center">{{storie.category}}</p>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor"
-            class="bi bi-plus-circle-fill" viewBox="0 0 16 16" (click)="onAddStories()">
-            <path
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-        </svg>
+  <!-- Header -->
+  <div class="stories-header d-flex justify-content-between align-items-center">
+    <div class="col-6">
+      <h3 class="mb-2">Stories |
+        <span (click)="onUpdateStories()">Current Category
+          <i class="bi bi-pencil-square"></i>
+        </span>
+      </h3>
     </div>
+    <div class="col-6">
+      <app-add-post-button></app-add-post-button>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Body -->
+  <div class="add-stories d-flex" *ngIf="(stories$ | async)">
+    <div class="stories me-4" *ngFor="let storie of storieData.getUniqueCategories()"
+      (click)="onViewStories(storie.category)">
+      <img class="w-100 h-100" [src]="storie.image" alt="storie.title">
+      <p class="text-center">{{storie.category}}</p>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-plus-circle-fill"
+      viewBox="0 0 16 16" (click)="onAddStories()">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+    </svg>
+  </div>
 </div>

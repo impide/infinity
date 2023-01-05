@@ -25,14 +25,14 @@ export class SidebarProfileComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onUpdateAvatar() {
+  onUpdateAvatar(): void {
     if (!this.selectedImageFile) return;
     const id = this.authData.getCurrentUserId();
     this.authService.updateOneAvatar(id, this.selectedImageFile);
   }
 
   // Read File (Avatar)
-  onPhotoSelected(photoSelector: HTMLInputElement) {
+  onPhotoSelected(photoSelector: HTMLInputElement): void {
     this.selectedImageFile = photoSelector.files[0];
     if (!this.selectedImageFile) return;
     let fileReader = new FileReader();

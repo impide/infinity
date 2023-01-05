@@ -1,12 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { PostsModel } from 'src/app/components/main-space-story/main-space-story.component';
 import { CommentModel } from 'src/app/models/Post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { CommentService } from 'src/app/services/comment/comment.service';
-import { PostService } from 'src/app/services/post/post.service';
 
 @Component({
   selector: 'app-view-post',
@@ -14,6 +13,9 @@ import { PostService } from 'src/app/services/post/post.service';
   styleUrls: ['./view-post.component.scss']
 })
 export class ViewPostComponent implements OnInit {
+  // Observable Authentification
+  isAuth$: Observable<boolean> = this.authService.isAuth$.asObservable();
+
   // Retrieve Data Post
   avatarCreator: string = this.post.postData.avatarCreator;
   creator: string = this.post.postData.creator;
@@ -27,8 +29,8 @@ export class ViewPostComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public post: PostsModel,
     public authData: AuthData,
-    private commentService: CommentService,
     private authService: AuthService,
+    private commentService: CommentService
   ) { }
 
   ngOnInit(): void {

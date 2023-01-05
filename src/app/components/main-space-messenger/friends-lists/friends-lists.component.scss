@@ -1,6 +1,10 @@
 // Header Sidebar
 .header-sidebar {
-  background: linear-gradient(to bottom, rgba(77, 77, 77, 0.155), rgba(140, 140, 140, 0.155));
+  background: linear-gradient(
+    to bottom,
+    rgba(77, 77, 77, 0.155),
+    rgba(140, 140, 140, 0.155)
+  );
 
   .bi-app-indicator,
   .bi-chat-left-text-fill,
@@ -46,5 +50,3 @@
     }
   }
 }
-
-// Users on Infinite

@@ -21,7 +21,7 @@ const routes: Routes = [
     ],
   },
   // Story Path
-  { path: 'main-space-story', component: MainSpaceStoryComponent, canActivate: [AuthGuard] },
+  { path: 'main-space-story', component: MainSpaceStoryComponent },
   // Messenger Path
   { path: 'main-space-messenger', component: MainSpaceMessengerComponent, canActivate: [AuthGuard] },
   // Setting Path

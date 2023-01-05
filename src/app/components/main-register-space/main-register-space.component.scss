@@ -1,22 +1,20 @@
-// Main Register Space
-.register-space {
-    background: linear-gradient(90deg,#174AB3,#4432B2);
-    min-height: calc(100% - 56px);
-}
+.register_space {
+  background: linear-gradient(90deg, #174ab3, #4432b2);
+  min-height: calc(100% - 56px);
 
-h1 {
+  h1 {
     font-size: 145px;
     text-transform: uppercase;
     font-weight: 900;
     text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+  }
 
-h3 {
+  h3 {
     font-size: 50px;
     text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+  }
 
-button {
+  button {
     width: 10em;
     height: 2.8em;
     border-radius: 20px;
@@ -24,15 +22,19 @@ button {
     background-color: transparent;
     border: 2px solid #fff;
     transition: all 1s;
-    box-shadow: 
-    -10px -10px 15px #174AB3,
-    10px 10px 15px #4432B2,
-    inset -10px -10px 15px #174AB3,
-    inset 10px 10px 15px #4432B2,
+    box-shadow: -10px -10px 15px #174ab3, 10px 10px 15px #4432b2,
+      inset -10px -10px 15px #174ab3, inset 10px 10px 15px #4432b2;
+  }
 }
 
-  @media screen and (max-width: 768px) {
-    h1 {
-      font-size: 100px;
-    }
+@media screen and (max-width: 768px) {
+  .register_space h1 {
+    font-size: 100px;
   }
+}
+
+@media screen and (max-width: 460px) {
+  .register_space h1 {
+    font-size: 50px;
+  }
+}

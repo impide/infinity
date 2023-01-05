@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainRegisterSpaceComponent } from './main-register-space.component';
+import { AvatarComponent } from './avatar.component';
 
-describe('MainRegisterSpaceComponent', () => {
-  let component: MainRegisterSpaceComponent;
-  let fixture: ComponentFixture<MainRegisterSpaceComponent>;
+describe('AvatarComponent', () => {
+  let component: AvatarComponent;
+  let fixture: ComponentFixture<AvatarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainRegisterSpaceComponent ]
+      declarations: [ AvatarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainRegisterSpaceComponent);
+    fixture = TestBed.createComponent(AvatarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

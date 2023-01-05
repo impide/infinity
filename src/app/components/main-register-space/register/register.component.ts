@@ -16,8 +16,7 @@ export class RegisterComponent implements OnInit {
     public stateRegister: StateRegisterService,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   // Transition Sign in to Log in
   tologIn(): void {

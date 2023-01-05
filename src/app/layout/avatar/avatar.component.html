@@ -1,0 +1,9 @@
+<div class="user-profile d-flex align-items-center" (click)="goToProfile(post)"
+  [ngClass]="{'cursor-pointer' : (isAuth$ | async)}">
+  <div class="avatar me-2">
+    <img class="w-100 h-100" [src]="post.avatarCreator" alt="Avatar">
+  </div>
+  <div class="creator">
+    {{ post.creator }}
+  </div>
+</div>

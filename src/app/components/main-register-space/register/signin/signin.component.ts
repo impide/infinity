@@ -9,19 +9,16 @@ import { AuthService } from 'src/app/services/authentification/authAPI/auth.serv
 })
 export class SigninComponent implements OnInit {
 
-  constructor(
-    public authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   // Create a new Account
   onSignup(form: NgForm): void {
-    if (form.invalid) {
-      return;
-    }
+    if (form.invalid) return;
     const { username, email, password } = form.value;
     this.authService.signup(username, email, password);
+
     form.reset();
-  }
+  };
 }

@@ -1,32 +1,37 @@
 ul li {
-    list-style: none;
-    background: rgba(0, 0, 0, 0.618);
-    cursor: pointer;
+  list-style: none;
+  background: rgba(0, 0, 0, 0.618);
+  cursor: pointer;
 
-    i {font-size: 25px;color: #fff;}
-    span {color: #fff}
+  i {
+    font-size: 25px;
+    color: #fff;
+  }
+  span {
+    color: #fff;
+  }
 }
 
 ul li:hover {
-    background: #fff;
+  background: #fff;
 
-    i,
-    span {
-        color: #000;
-    }
+  i,
+  span {
+    color: #000;
+  }
 }
 
 ul li:hover i {
-    animation: icon-setting 1s linear infinite;
+  animation: icon-setting 1s linear infinite;
 }
 
 @keyframes icon-setting {
-    0%,
-    100% {
-        transform: rotateZ(-15deg);
-    }
+  0%,
+  100% {
+    transform: rotateZ(-15deg);
+  }
 
-    50% {
-        transform: rotateZ(15deg);
-    }
+  50% {
+    transform: rotateZ(15deg);
+  }
 }

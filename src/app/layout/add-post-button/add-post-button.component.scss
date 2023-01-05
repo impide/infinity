@@ -1,0 +1,23 @@
+// Add Post
+.addPost {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 30px;
+  background: #fff;
+  cursor: pointer;
+
+  .containerAdd span {
+    font-family: "Pacifico", cursive;
+    font-size: 16px;
+  }
+
+  .bi-plus-circle-fill {
+    font-size: 30px;
+    color: #5783fb;
+    transition: all 0.5s;
+  }
+}
+
+.addPost:hover .bi-plus-circle-fill {
+  color: #e74573;
+  transform: rotateZ(90deg);
+}

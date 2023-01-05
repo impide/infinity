@@ -10,20 +10,18 @@ import { AuthService } from 'src/app/services/authentification/authAPI/auth.serv
 export class LoginComponent implements OnInit {
   showPassword: boolean = false;
 
-  constructor(
-    public authService: AuthService
-  ) { }
+  constructor(public authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   // Login into existing Account
   onSubmit(form: NgForm): void {
-    this.authService.signin(form.value.email, form.value.password);
-  }
+    const { email, password } = form.value;
+    this.authService.signin(email, password);
+  };
 
   onShowPassword(): void {
     this.showPassword = !this.showPassword;
-  }
+  };
 
 }

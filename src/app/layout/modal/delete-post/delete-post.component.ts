@@ -13,7 +13,7 @@ export class DeletePostComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private postService: PostService,
-    @Inject(MAT_DIALOG_DATA) public postId: PostId,
+    @Inject(MAT_DIALOG_DATA) public postId: PostId
   ) { }
 
   ngOnInit(): void { }

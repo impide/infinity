@@ -1,0 +1,21 @@
+.user-profile .avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+.user-profile .creator {
+  color: #fff;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Pacifico", cursive;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

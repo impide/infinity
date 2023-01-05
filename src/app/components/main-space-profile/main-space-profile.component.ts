@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ProfileRoutes, ProfileRoutesData } from 'src/app/core/data/routes-profile-data';
-import { AddPostComponent } from 'src/app/layout/modal/add-post/add-post.component';
 import { NotifModel } from 'src/app/models/Notif/notif.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
@@ -19,6 +18,7 @@ export class MainSpaceProfileComponent implements OnInit {
   // Routes Profile
   profileRoutes: ProfileRoutes[] = ProfileRoutesData;
 
+  currentUserId: string;
   targetUserId: string;
   targetUsername: string;
   targetAvatar: string;
@@ -40,6 +40,7 @@ export class MainSpaceProfileComponent implements OnInit {
     this.retrieveRouteData();
     this.retrieveNotificationData();
     this.retrieveUsersData();
+    this.currentUserId = this.authData.getCurrentUserId();
   };
 
   // Get Data From current Route
@@ -70,12 +71,5 @@ export class MainSpaceProfileComponent implements OnInit {
     requestData.requestReceiverId = this.targetUserId;
     requestData.typeOfRequest = 'FriendRequest';
     this.notifService.requestOneFriend(requestData, this.targetUserId);
-  }
-
-  // Create a new Post
-  onCreatePost(): void {
-    this.dialog.open(AddPostComponent, {
-      panelClass: ['col-4']
-    });
   }
 }

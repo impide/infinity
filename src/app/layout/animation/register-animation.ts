@@ -2,7 +2,21 @@ import { state, style, trigger } from "@angular/animations";
 import { Injectable } from "@angular/core";
 
 export const RegisterAnimation = [
-    // Animation Sign in - Login (Top)
+      // Animation Sign up - Login (Title)
+      trigger('sectionState', [
+        state('signIn', style({
+            transform: 'translateX(0)',
+            transition: 'all .5s'
+        })),
+        state('logIn', style({
+            position: 'absolute',
+            top: '0',
+            right: '0',
+            transform: 'translateX(100%)',
+            transition: 'all .5s'
+        }))
+    ]),
+    // Animation Sign up - Login (Body)
     trigger('registerState', [
         state('static', style({
             transform: 'translateX(0)',
@@ -12,31 +26,14 @@ export const RegisterAnimation = [
             transform: 'translateX(-100%)',
             transition: 'all .5s'
         }))
-    ]),// Animation Inscription - Connexion (Body)
-    trigger('sectionState', [
-        state('signIn', style({
-            'background': 'linear-gradient(45deg,#174AB3,#4432B2,#212529)',
-            'border-radius': '20px',
-            transform: 'translateX(0)',
-            transition: 'all .5s'
-        })),
-        state('logIn', style({
-            'background': 'linear-gradient(45deg,#174AB3,#4432B2,#212529)',
-            'border-radius': '20px',
-            position: 'absolute',
-            top: '0',
-            right: '0',
-            transform: 'translateX(100%)',
-            transition: 'all .5s'
-        }))
     ])
-]
+];
 
 @Injectable({ providedIn: 'root' })
 export class StateRegisterService {
-    // State Animation Register (A Deplacer)
-    defaultAnimation: string = '';
-    stateAnimation: string = '';
+    // State Animation Register
+    titleAnimation: string = '';
+    bodyAnimation: string = '';
 
     // Title
     titleIns!: boolean;
@@ -44,16 +41,16 @@ export class StateRegisterService {
 
     // When Open Login modal
     toLoginState() {
-        this.defaultAnimation = 'logIn';
-        this.stateAnimation = 'transition';
+        this.titleAnimation = 'logIn';
+        this.bodyAnimation = 'transition';
         this.titleCon = true;
         this.titleIns = false;
     }
 
-    // When Open Signin modal
+    // When Open Sign up modal
     toSignInState() {
-        this.defaultAnimation = 'signIn';
-        this.stateAnimation = 'static';
+        this.titleAnimation = 'signIn';
+        this.bodyAnimation = 'static';
         this.titleCon = false;
         this.titleIns = true;
     }

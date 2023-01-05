@@ -11,8 +11,15 @@ export class MainRegisterSpaceComponent implements OnInit {
   // Observable Authentification
   isAuth$: Observable<boolean> = this.authService.isAuth$.asObservable();
 
+  // Button Content
+  btnContent: string = "Preview";
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void { }
+
+  changeBtnContent(content: string): string {
+    return this.btnContent = content;
+  }
 
 }
