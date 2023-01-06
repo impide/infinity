@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AddPostComponent } from 'src/app/layout/modal/add-post/add-post.component';
 import { ViewPostComponent } from 'src/app/layout/modal/view-post/view-post.component';
-import { LikeModel, PostModel } from 'src/app/models/Post/post.model';
+import { LikeModel, PostModel } from 'src/app/models/post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { PostService } from 'src/app/services/post/post.service';

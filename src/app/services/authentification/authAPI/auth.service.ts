@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
-import { StateRegisterService } from 'src/app/layout/animation/register-animation';
-import { SnackBarService } from 'src/app/layout/snackbar/snackbar-service';
-import { Data } from 'src/app/models/Data/data.model';
-import { UserModel } from 'src/app/models/User/user.model';
+import { StateRegisterService } from 'src/app/layout/Material/animation/register-animation';
+import { SnackBarService } from 'src/app/layout/Material/snackbar/snackbar-service';
+import { Data } from 'src/app/models/data/data.model';
+import { UserModel } from 'src/app/models/user/user.model';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from '../../notification/notificationAPI/notification.service';
 

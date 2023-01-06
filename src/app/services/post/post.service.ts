@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, take } from 'rxjs';
-import { SnackBarService } from 'src/app/layout/snackbar/snackbar-service';
-import { Data } from 'src/app/models/Data/data.model';
-import { LikeModel, PostModel } from 'src/app/models/Post/post.model';
+import { SnackBarService } from 'src/app/layout/Material/snackbar/snackbar-service';
+import { Data } from 'src/app/models/data/data.model';
+import { LikeModel, PostModel } from 'src/app/models/post/post.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

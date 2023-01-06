@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RetrieveRoutesId } from 'src/app/core/data/retrieve-routes-id.service';
-import { PostModel } from 'src/app/models/Post/post.model';
+import { PostModel } from 'src/app/models/post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { PostService } from 'src/app/services/post/post.service';
@@ -11,11 +11,11 @@ import { DeletePostComponent } from '../../modal/delete-post/delete-post.compone
 import { ViewPostComponent } from '../../modal/view-post/view-post.component';
 
 @Component({
-  selector: 'app-publication',
-  templateUrl: './publication.component.html',
-  styleUrls: ['./publication.component.scss']
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss']
 })
-export class PublicationComponent implements OnInit, OnDestroy {
+export class CardComponent implements OnInit, OnDestroy {
   // Posts Subscription
   posts: PostModel[] = [];
   postsSub: Subscription;

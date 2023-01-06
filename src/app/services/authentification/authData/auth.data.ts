@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { catchError, EMPTY, finalize, map, Observable } from "rxjs";
-import { UserModel } from "src/app/models/User/user.model";
+import { UserModel } from "src/app/models/user/user.model";
 import { AuthService } from "../authAPI/auth.service";
 
 @Injectable({

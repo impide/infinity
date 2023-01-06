@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { RegisterComponent } from 'src/app/components/main-register-space/register/register.component';
-import { NotifModel, RequestValidated } from 'src/app/models/Notif/notif.model';
+import { NotifModel, RequestValidated } from 'src/app/models/notif/notif.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { NotificationService } from 'src/app/services/notification/notificationAPI/notification.service';
-import { StateRegisterService } from '../../animation/register-animation';
+import { StateRegisterService } from 'src/app/layout/Material/animation/register-animation';
 
 @Component({
   selector: 'app-user-profile',

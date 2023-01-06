@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
-import { NotifModel } from "src/app/models/Notif/notif.model";
-import { UserModel } from "src/app/models/User/user.model";
+import { NotifModel } from "src/app/models/notif/notif.model";
+import { UserModel } from "src/app/models/user/user.model";
 import { AuthService } from "../../authentification/authAPI/auth.service";
 import { AuthData } from "../../authentification/authData/auth.data";
 import { RouteData } from "../../helpers/route/route.data";

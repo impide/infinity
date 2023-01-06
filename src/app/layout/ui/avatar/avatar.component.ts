@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { PostModel } from 'src/app/models/Post/post.model';
+import { PostModel } from 'src/app/models/post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 
 @Component({

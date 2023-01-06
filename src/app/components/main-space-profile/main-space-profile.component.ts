@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ProfileRoutes, ProfileRoutesData } from 'src/app/core/data/routes-profile-data';
-import { NotifModel } from 'src/app/models/Notif/notif.model';
+import { NotifModel } from 'src/app/models/notif/notif.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { RouteData } from 'src/app/services/helpers/route/route.data';

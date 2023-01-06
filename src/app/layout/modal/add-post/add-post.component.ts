@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostModel } from 'src/app/models/Post/post.model';
-import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { PostModel } from 'src/app/models/post/post.model';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { PostService } from 'src/app/services/post/post.service';
 

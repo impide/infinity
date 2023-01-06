@@ -9,19 +9,24 @@
     <div class="col-4 position-relative">
       <div class="currentUser p-2 mb-2 d-flex justify-content-between align-items-center">
         <!-- Avatar -->
-        <div class="avatar" [ngClass]="{'cursor-pointer' : (isAuth$ | async)}">
+        <div class="avatar" [ngClass]="{'cursor-pointer' : (isAuth$ | async)}"
+        (click)="goToProfile()">
           <img class="me-2" [src]="avatarCreator" alt="Avatar">
           <span class="text-white">{{creator}}</span>
         </div>
         <!-- Setting -->
-        <div class="setting" [ngClass]="{'cursor-pointer' : (isAuth$ | async)}">
-          <p class="m-0 text-end">
+        <div class="setting dropdown" [ngClass]="{'cursor-pointer' : (isAuth$ | async)}">
+          <p class="m-0 text-end" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
               class="bi bi-three-dots text-white" viewBox="0 0 16 16">
               <path
                 d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
             </svg>
           </p>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li class="dropdown-item cursor-pointer" (click)="onDetailPost()">Detail</li>
+            <li class="dropdown-item cursor-pointer" (click)="onDeletePost()">Delete</li>
+          </ul>
         </div>
       </div>
       <div class="description">

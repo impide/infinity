@@ -27,15 +27,15 @@ import { SigninComponent } from './components/main-register-space/register/signi
 import { MainSpaceStoryComponent } from './components/main-space-story/main-space-story.component';
 import { MainSpaceMessengerComponent } from './components/main-space-messenger/main-space-messenger.component';
 import { MainSpaceProfileComponent } from './components/main-space-profile/main-space-profile.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { HeaderComponent } from './layout/ui/header/header.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ViewPostComponent } from './layout/modal/view-post/view-post.component';
 import { AddPostComponent } from './layout/modal/add-post/add-post.component';
 import { DeletePostComponent } from './layout/modal/delete-post/delete-post.component';
-import { UserProfileComponent } from './layout/header/user-profile/user-profile.component';
+import { UserProfileComponent } from './layout/ui/header/user-profile/user-profile.component';
 import { FriendsListsComponent } from './components/main-space-messenger/friends-lists/friends-lists.component';
 import { MainMessagesComponent } from './components/main-space-messenger/main-messages/main-messages.component';
-import { PublicationComponent } from './layout/cards/publication/publication.component';
+import { CardComponent } from './layout/UI/card/card.component';
 import { MainSpaceSettingComponent } from './components/main-space-setting/main-space-setting.component';
 import { SidebarSettingComponent } from './components/main-space-setting/sidebar-setting/sidebar-setting.component';
 import { ViewSettingComponent } from './components/main-space-setting/view-setting/view-setting.component';
@@ -45,13 +45,13 @@ import { AccountComponent } from './components/main-space-setting/components-set
 import { NotificationComponent } from './components/main-space-setting/components-setting/notification/notification.component';
 import { MessageComponent } from './components/main-space-setting/components-setting/message/message.component';
 import { StoriesComponent } from './components/main-space-profile/stories/stories.component';
-import { AddStoriesComponent } from './layout/modal/add-stories/add-stories.component';
-import { ViewStoriesComponent } from './layout/modal/view-stories/view-stories.component';
-import { UpdateStoriesComponent } from './layout/modal/update-stories/update-stories.component';
+import { AddStoriesComponent } from './layout/Modal/add-stories/add-stories.component';
+import { ViewStoriesComponent } from './layout/Modal/view-stories/view-stories.component';
+import { UpdateStoriesComponent } from './layout/Modal/update-stories/update-stories.component';
 import { ViewDetailComponent } from './layout/modal/view-detail/view-detail.component';
-import { SettingComponent } from './layout/setting/setting.component';
-import { AvatarComponent } from './layout/avatar/avatar.component';
-import { AddPostButtonComponent } from './layout/add-post-button/add-post-button.component';
+import { SettingComponent } from './layout/ui/setting/setting.component';
+import { AvatarComponent } from './layout/ui/avatar/avatar.component';
+import { AddPostButtonComponent } from './layout/ui/add-post-button/add-post-button.component';
 
 
 @NgModule({
@@ -72,7 +72,7 @@ import { AddPostButtonComponent } from './layout/add-post-button/add-post-button
     UserProfileComponent,
     FriendsListsComponent,
     MainMessagesComponent,
-    PublicationComponent,
+    CardComponent,
     MainSpaceSettingComponent,
     SidebarSettingComponent,
     ViewSettingComponent,

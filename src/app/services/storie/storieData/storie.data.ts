@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
-import { StorieModel } from "src/app/models/Storie/storie.model";
+import { StorieModel } from "src/app/models/storie/storie.model";
 import { AuthData } from "../../authentification/authData/auth.data";
 import { StorieService } from "../storieAPI/storie.service";
 
@@ -31,7 +31,7 @@ export class StorieData implements OnDestroy {
         )
     };
 
-    // Get Stories of current Category 
+    // Get Stories of current Category
     getCategory(category: string): StorieModel[] {
         return this.storiesValues.filter((storie => storie.category === category));
     };

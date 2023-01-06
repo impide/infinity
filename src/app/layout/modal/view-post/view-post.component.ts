@@ -1,11 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { PostsModel } from 'src/app/components/main-space-story/main-space-story.component';
-import { CommentModel } from 'src/app/models/Post/post.model';
+import { CommentModel, PostModel } from 'src/app/models/post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { CommentService } from 'src/app/services/comment/comment.service';
+import { DeletePostComponent } from '../delete-post/delete-post.component';
+import { ViewDetailComponent } from '../view-detail/view-detail.component';
 
 @Component({
   selector: 'app-view-post',
@@ -29,6 +32,8 @@ export class ViewPostComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public post: PostsModel,
     public authData: AuthData,
+    public dialog: MatDialog,
+    public router: Router,
     private authService: AuthService,
     private commentService: CommentService
   ) { }
@@ -50,7 +55,7 @@ export class ViewPostComponent implements OnInit {
       console.log(err);
       return false;
     }
-  }
+  };
 
   onAddComment(commentInput: HTMLInputElement) {
     // Retrieve PostId
@@ -64,6 +69,38 @@ export class ViewPostComponent implements OnInit {
     // Call the Service
     this.commentService.addOneComment(comment, postId);
     commentInput.value = '';
+  };
+
+    // Open Setting Modal (Detail Post)
+    onDetailPost() {
+      const post = {
+        creator: this.post.postData.creator,
+        likes: this.post.postData.likes,
+        createdAt: this.post.postData.createdAt
+      }
+
+      this.dialog.open(ViewDetailComponent, {
+        data: {
+          postData: post
+        },
+        panelClass: ['col-4']
+      })
+    };
+
+    // Open Setting Modal (Delete Post)
+    onDeletePost() {
+      const _id = this.post.postData._id;
+      this.dialog.open(DeletePostComponent, {
+        data: {
+          _id: _id
+        },
+        panelClass: ['col-4']
+      })
+    };
+
+  goToProfile(): void {
+    this.router.navigate(['/main-space-profile', this.post.postData._id, this.post.postData.creator]);
+    this.dialog.closeAll();
   }
 
 }

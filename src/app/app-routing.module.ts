@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './layout/not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainRegisterSpaceComponent } from './components/main-register-space/main-register-space.component';
 import { RegisterComponent } from './components/main-register-space/register/register.component';
 import { MainSpaceStoryComponent } from './components/main-space-story/main-space-story.component';
 import { AuthGuard } from './services/authentification/authGuard/auth.guard';
 import { MainSpaceMessengerComponent } from './components/main-space-messenger/main-space-messenger.component';
 import { MainSpaceProfileComponent } from './components/main-space-profile/main-space-profile.component';
-import { PublicationComponent } from './layout/cards/publication/publication.component';
+import { CardComponent } from './layout/UI/card/card.component';
 import { MainSpaceSettingComponent } from './components/main-space-setting/main-space-setting.component';
 import { DashboardComponent } from './components/main-space-setting/components-setting/dashboard/dashboard.component';
 
@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'main-space-profile/:id/:username', component: MainSpaceProfileComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'profile-publication', pathMatch: 'full' },
-      { path: 'profile-publication', component: PublicationComponent }
+      { path: 'profile-publication', component: CardComponent }
     ]
   },
   // Not Found Path

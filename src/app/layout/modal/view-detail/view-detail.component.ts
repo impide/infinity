@@ -12,7 +12,6 @@ export class ViewDetailComponent implements OnInit {
   likes: number;
   date: Date;
 
-
   constructor(
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public post: PostsModel

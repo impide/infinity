@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
-import { SnackBarService } from 'src/app/layout/snackbar/snackbar-service';
-import { Data } from 'src/app/models/Data/data.model';
-import { StorieModel } from 'src/app/models/Storie/storie.model';
+import { SnackBarService } from 'src/app/layout/Material/snackbar/snackbar-service';
+import { Data } from 'src/app/models/data/data.model';
+import { StorieModel } from 'src/app/models/storie/storie.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

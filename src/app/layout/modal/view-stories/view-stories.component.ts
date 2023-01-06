@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StorieViewModal } from 'src/app/components/main-space-profile/stories/stories.component';
-import { StorieModel } from 'src/app/models/Storie/storie.model';
+import { StorieModel } from 'src/app/models/storie/storie.model';
 import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';
 import { StorieData } from 'src/app/services/storie/storieData/storie.data';
 
@@ -11,7 +11,7 @@ import { StorieData } from 'src/app/services/storie/storieData/storie.data';
   styleUrls: ['./view-stories.component.scss']
 })
 export class ViewStoriesComponent implements OnInit {
-  // Index Image 
+  // Index Image
   indexImage: number = 0;
 
   // Categories Length
@@ -59,7 +59,7 @@ export class ViewStoriesComponent implements OnInit {
     let totalLength: number = this.categoriesLength;
 
     this.storiesService.interval = setInterval(() => {
-      // Controls => Manage error & Clean up Before anything else 
+      // Controls => Manage error & Clean up Before anything else
       if (currentIndex === totalLength) {
         clearInterval(this.storiesService.interval);
         for (let i = 0; i < currentStorie.length; i++) {

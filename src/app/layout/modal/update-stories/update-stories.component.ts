@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorieModel } from 'src/app/models/Storie/storie.model';
+import { StorieModel } from 'src/app/models/storie/storie.model';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';
 import { StorieData } from 'src/app/services/storie/storieData/storie.data';

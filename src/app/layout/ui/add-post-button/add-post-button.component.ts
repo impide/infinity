@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
-import { AddPostComponent } from '../modal/add-post/add-post.component';
+import { AddPostComponent } from '../../modal/add-post/add-post.component';
 
 @Component({
   selector: 'app-add-post-button',
