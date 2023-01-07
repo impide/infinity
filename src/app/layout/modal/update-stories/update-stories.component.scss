@@ -2,13 +2,19 @@
 #post-preview {
     width: 450px;
     height: 400px;
+
+    #post-preview-image {
+      object-fit: cover;
+      object-position: center;
+      border-radius: 1em;
+      border: 1px dashed gray;
+  }
 }
 
-#post-preview-image {
-    object-fit: cover;
-    object-position: center;
-    border-radius: 1em;
-    border: 1px dashed gray;
+// Add Choice
+.stories-action {
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 // Delete Choice

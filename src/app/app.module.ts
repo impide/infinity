@@ -45,9 +45,9 @@ import { AccountComponent } from './components/main-space-setting/components-set
 import { NotificationComponent } from './components/main-space-setting/components-setting/notification/notification.component';
 import { MessageComponent } from './components/main-space-setting/components-setting/message/message.component';
 import { StoriesComponent } from './components/main-space-profile/stories/stories.component';
-import { AddStoriesComponent } from './layout/Modal/add-stories/add-stories.component';
-import { ViewStoriesComponent } from './layout/Modal/view-stories/view-stories.component';
-import { UpdateStoriesComponent } from './layout/Modal/update-stories/update-stories.component';
+import { AddStoriesComponent } from './layout/modal/add-stories/add-stories.component';
+import { ViewStoriesComponent } from './layout/modal/view-stories/view-stories.component';
+import { UpdateStoriesComponent } from './layout/modal/update-stories/update-stories.component';
 import { ViewDetailComponent } from './layout/modal/view-detail/view-detail.component';
 import { SettingComponent } from './layout/ui/setting/setting.component';
 import { AvatarComponent } from './layout/ui/avatar/avatar.component';

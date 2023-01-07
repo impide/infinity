@@ -13,12 +13,13 @@
             left: 0;
 
             ul {
-                list-style: none;
+              list-style: none;
             }
-        }
-        
+        };
+
         img {
-            object-position: center;
-        }
-    }
-}
+          object-fit: cover;
+          object-position: center;
+        };
+    };
+};

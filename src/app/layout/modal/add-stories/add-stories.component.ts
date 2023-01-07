@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { StorieModel } from 'src/app/models/storie/storie.model';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';
@@ -8,10 +8,13 @@ import { StorieService } from 'src/app/services/storie/storieAPI/storie.service'
   templateUrl: './add-stories.component.html',
   styleUrls: ['./add-stories.component.scss']
 })
-export class AddStoriesComponent implements OnInit {
+export class AddStoriesComponent implements OnInit, OnChanges  {
   // File
   selectedImageFile: File;
   selectedImage: string;
+
+  // Validation
+  storieTitle: string = '';
 
   constructor(
     public authData: AuthData,
@@ -20,8 +23,13 @@ export class AddStoriesComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+  }
+
   // Create Storie model
   onValidateStories(category: HTMLInputElement): void {
+
     if (!category || !this.selectedImage) {
       return;
     }

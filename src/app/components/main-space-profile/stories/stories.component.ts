@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { AddStoriesComponent } from 'src/app/layout/Modal/add-stories/add-stories.component';
-import { UpdateStoriesComponent } from 'src/app/layout/Modal/update-stories/update-stories.component';
-import { ViewStoriesComponent } from 'src/app/layout/Modal/view-stories/view-stories.component';
+import { AddStoriesComponent } from 'src/app/layout/modal/add-stories/add-stories.component';
+import { UpdateStoriesComponent } from 'src/app/layout/modal/update-stories/update-stories.component';
+import { ViewStoriesComponent } from 'src/app/layout/modal/view-stories/view-stories.component';
 import { StorieModel } from 'src/app/models/storie/storie.model';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';

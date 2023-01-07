@@ -18,7 +18,8 @@
                 <mat-label>Choose Category</mat-label>
                 <mat-select [(ngModel)]="selectedCategory">
                     <mat-option *ngFor="let unique of storieData.getUniqueCategories()" [value]="unique.category">
-                        {{unique.category}}</mat-option>
+                        {{unique.category}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
             <!-- Select Image -->
@@ -26,7 +27,7 @@
                 <img id="post-preview-image" class="w-100 h-100" src="#" alt="image">
             </div>
             <div class="stories-action d-flex justify-content-between col-12">
-                <button class="btn col-9 ps-0">
+                <button class="btn col-9 ps-0 text-start">
                     <label for="photo_upload">
                         <input #photoSelector (change)="onPhotoSelected(photoSelector)" id="photo_upload" type="file"
                             accept="image/*">
