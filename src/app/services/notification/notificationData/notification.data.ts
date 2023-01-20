@@ -1,10 +1,10 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
+import { RetrieveRoutesData } from "src/app/core/data/retrieve-routes-id.service";
 import { NotifModel } from "src/app/models/notif/notif.model";
 import { UserModel } from "src/app/models/user/user.model";
 import { AuthService } from "../../authentification/authAPI/auth.service";
 import { AuthData } from "../../authentification/authData/auth.data";
-import { RouteData } from "../../helpers/route/route.data";
 import { NotificationService } from "../notificationAPI/notification.service";
 
 @Injectable({
@@ -26,8 +26,8 @@ export class NotificationData implements OnDestroy {
     constructor(
         private authData: AuthData,
         private authAPI: AuthService,
-        private routeData: RouteData,
-        private notifService: NotificationService
+        private notifService: NotificationService,
+        private dataParamsUserRoute : RetrieveRoutesData
     ) { }
 
     getNotificationData(): void {
@@ -44,7 +44,7 @@ export class NotificationData implements OnDestroy {
         // Array of each request Current User has Create (Filtering by his Id)
         const currentNotif = notifs.filter(x => x.requestCreateById === this.authData.getCurrentUserId());
         // Check if a request has been send to this Target User (Filtering by Target Id)
-        if ((currentNotif.filter(x => x.requestReceiverId === this.routeData.targetUserId)).length > 0) {
+        if ((currentNotif.filter(x => x.requestReceiverId === this.dataParamsUserRoute.getRoutesId())).length > 0) {
             // Set the State of Request
             return this.requestButton = 'Pending';
         } else {
@@ -64,7 +64,7 @@ export class NotificationData implements OnDestroy {
 
     getRequestValidating(users: UserModel[], requestButton: string): void {
         /* Before anything, Retrieve target User Avatar */
-        this.targetAvatar = users.filter(userId => userId._id === this.routeData.targetUserId)[0].avatar;
+        this.targetAvatar = users.filter(userId => userId._id === this.dataParamsUserRoute.getRoutesId())[0].avatar;
         /* If the request is "Pending" then no need to continue */
         if (requestButton === 'Pending') {
             return;
@@ -73,7 +73,7 @@ export class NotificationData implements OnDestroy {
         this.users = users.filter(x => x._id === this.authData.getCurrentUserId());
         /* We filtered the previous data for check if target User Profile was already friend */
         for (let i = 0; i < this.users.filter(x => x.friends).length; i++) {
-            const filteredFriends = this.users.filter(x => x.friends[i]?.username === this.routeData.targetUsername);
+            const filteredFriends = this.users.filter(x => x.friends[i]?.username === this.dataParamsUserRoute.getRoutesUsername());
             if (filteredFriends.length > 0) {
                 // Set the State of Request
                 this.requestButton = 'Already Friend';

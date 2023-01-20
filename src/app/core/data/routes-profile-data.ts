@@ -5,7 +5,7 @@ export const ProfileRoutesData: ProfileRoutes[] = [
   },
   {
     profileName: 'My Friends-Lists',
-    routePath: ''
+    routePath: 'profile-friend-list'
   }];
 
 

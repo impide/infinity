@@ -5,6 +5,7 @@ import { AddStoriesComponent } from 'src/app/layout/modal/add-stories/add-storie
 import { UpdateStoriesComponent } from 'src/app/layout/modal/update-stories/update-stories.component';
 import { ViewStoriesComponent } from 'src/app/layout/modal/view-stories/view-stories.component';
 import { StorieModel } from 'src/app/models/storie/storie.model';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { StorieService } from 'src/app/services/storie/storieAPI/storie.service';
 import { StorieData } from 'src/app/services/storie/storieData/storie.data';
@@ -15,13 +16,15 @@ import { StorieData } from 'src/app/services/storie/storieData/storie.data';
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent implements OnInit {
+  isAuth$: Observable<boolean> = this.authService.isAuth$.asObservable();
   stories$: Observable<StorieModel[]>;
 
   constructor(
     public dialog: MatDialog,
     public authData: AuthData,
     public storieData: StorieData,
-    private storiesAPI: StorieService
+    private storiesAPI: StorieService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {

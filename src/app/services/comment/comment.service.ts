@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SnackBarService } from 'src/app/layout/Material/snackbar/snackbar-service';
+import { SnackBarService } from 'src/app/layout/material/snackbar/snackbar-service';
 import { Data } from 'src/app/models/data/data.model';
 import { CommentModel } from 'src/app/models/post/post.model';
 import { environment } from 'src/environments/environment';

@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
-import { StateRegisterService } from 'src/app/layout/Material/animation/register-animation';
-import { SnackBarService } from 'src/app/layout/Material/snackbar/snackbar-service';
+import { StateRegisterService } from 'src/app/layout/material/animation/register-animation';
+import { SnackBarService } from 'src/app/layout/material/snackbar/snackbar-service';
 import { Data } from 'src/app/models/data/data.model';
 import { UserModel } from 'src/app/models/user/user.model';
 import { environment } from 'src/environments/environment';
@@ -25,7 +25,7 @@ export class AuthService {
   // Observable Current User
   isAuth$ = new BehaviorSubject<boolean>(false);
   currentUserData$ = new BehaviorSubject<UserModel>(
-    { _id: null, username: '', email: '', avatar: '', friends: [{ username: '', avatar: '', userId: '' }] }
+    { _id: null, username: null, email: null, avatar: null, friends: [{ username: null, avatar: null, userId: null }] }
   );
 
   constructor(
@@ -45,6 +45,7 @@ export class AuthService {
       if (data) {
         const userData: UserModel = data.userData;
         const token = data.token;
+
         if (token) {
           /* Authenticate current User */
           this.token = token;

@@ -2,7 +2,9 @@
 <div class="main-space-story px-2">
   <div class="header col-xl-12 pt-2">
     <!-- Add Post -->
-    <app-add-post-button></app-add-post-button>
+    <div class="col-sm-6 col-lg-2 mb-4 ms-auto me-2" *ngIf="(isAuth$ | async)">
+      <app-add-post-button></app-add-post-button>
+    </div>
   </div>
 
   <div class="row w-100">

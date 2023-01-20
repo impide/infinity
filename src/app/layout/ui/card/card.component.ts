@@ -2,9 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RetrieveRoutesId } from 'src/app/core/data/retrieve-routes-id.service';
+import { RetrieveRoutesData } from 'src/app/core/data/retrieve-routes-id.service';
 import { PostModel } from 'src/app/models/post/post.model';
-import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { PostService } from 'src/app/services/post/post.service';
 import { DeletePostComponent } from '../../modal/delete-post/delete-post.component';
@@ -24,9 +23,8 @@ export class CardComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public router: Router,
     public authData: AuthData,
-    private authService: AuthService,
     private postService: PostService,
-    private retrieveRoutesId: RetrieveRoutesId,
+    private dataParamsUserRoute: RetrieveRoutesData,
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +37,7 @@ export class CardComponent implements OnInit, OnDestroy {
           this.posts = posts.filter(x => x.userId === this.authData.getCurrentUserId());
           // Else if Router Url = TargetUserId we do the same previous thing
         } else {
-          this.posts = posts.filter(x => x.userId === this.retrieveRoutesId.getRoutesId());
+          this.posts = posts.filter(x => x.userId === this.dataParamsUserRoute.getRoutesId());
         }
       }
     )
@@ -67,7 +65,9 @@ export class CardComponent implements OnInit, OnDestroy {
 
   // Unsubscribe to Post
   ngOnDestroy(): void {
-    this.postsSub.unsubscribe();
+    if (this.postsSub != null) {
+      this.postsSub.unsubscribe();
+  }
   }
 }
 

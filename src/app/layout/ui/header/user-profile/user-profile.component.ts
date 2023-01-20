@@ -6,7 +6,7 @@ import { NotifModel, RequestValidated } from 'src/app/models/notif/notif.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { NotificationService } from 'src/app/services/notification/notificationAPI/notification.service';
-import { StateRegisterService } from 'src/app/layout/Material/animation/register-animation';
+import { StateRegisterService } from 'src/app/layout/material/animation/register-animation';
 
 @Component({
   selector: 'app-user-profile',

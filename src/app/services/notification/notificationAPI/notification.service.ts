@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
-import { SnackBarService } from 'src/app/layout/Material/snackbar/snackbar-service';
+import { SnackBarService } from 'src/app/layout/material/snackbar/snackbar-service';
 import { Data } from 'src/app/models/data/data.model';
 import { NotifModel, RequestValidated } from 'src/app/models/notif/notif.model';
 import { environment } from 'src/environments/environment';

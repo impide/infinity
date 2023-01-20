@@ -15,7 +15,8 @@
           <span class="text-white">{{creator}}</span>
         </div>
         <!-- Setting -->
-        <div class="setting dropdown" [ngClass]="{'cursor-pointer' : (isAuth$ | async)}">
+        <div class="setting dropdown" *ngIf="(isAuth$ | async)"
+        [ngClass]="{'cursor-pointer' : (isAuth$ | async)}">
           <p class="m-0 text-end" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
               class="bi bi-three-dots text-white" viewBox="0 0 16 16">

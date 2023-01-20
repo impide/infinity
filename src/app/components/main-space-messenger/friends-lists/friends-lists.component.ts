@@ -36,7 +36,7 @@ export class FriendsListsComponent implements OnInit {
 
   // Go to target Profile User
   goToProfile(user: UserModel): void {
-    this.router.navigate(['/main-space-profile', user._id, user.username]);
+    this.router.navigate([`/main-space-profile/${user._id}/${user.username}`]);
   }
 
 }

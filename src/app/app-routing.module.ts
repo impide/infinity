@@ -7,9 +7,10 @@ import { MainSpaceStoryComponent } from './components/main-space-story/main-spac
 import { AuthGuard } from './services/authentification/authGuard/auth.guard';
 import { MainSpaceMessengerComponent } from './components/main-space-messenger/main-space-messenger.component';
 import { MainSpaceProfileComponent } from './components/main-space-profile/main-space-profile.component';
-import { CardComponent } from './layout/UI/card/card.component';
+import { CardComponent } from './layout/ui/card/card.component';
 import { MainSpaceSettingComponent } from './components/main-space-setting/main-space-setting.component';
 import { DashboardComponent } from './components/main-space-setting/components-setting/dashboard/dashboard.component';
+import { FriendListComponent } from './layout/ui/friend-list/friend-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main-space-register', pathMatch: 'full' },
@@ -35,7 +36,8 @@ const routes: Routes = [
   {
     path: 'main-space-profile/:id/:username', component: MainSpaceProfileComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'profile-publication', pathMatch: 'full' },
-      { path: 'profile-publication', component: CardComponent }
+      { path: 'profile-publication', component: CardComponent },
+      { path: 'profile-friend-list', component: FriendListComponent }
     ]
   },
   // Not Found Path

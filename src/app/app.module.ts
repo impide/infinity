@@ -35,7 +35,7 @@ import { DeletePostComponent } from './layout/modal/delete-post/delete-post.comp
 import { UserProfileComponent } from './layout/ui/header/user-profile/user-profile.component';
 import { FriendsListsComponent } from './components/main-space-messenger/friends-lists/friends-lists.component';
 import { MainMessagesComponent } from './components/main-space-messenger/main-messages/main-messages.component';
-import { CardComponent } from './layout/UI/card/card.component';
+import { CardComponent } from './layout/ui/card/card.component';
 import { MainSpaceSettingComponent } from './components/main-space-setting/main-space-setting.component';
 import { SidebarSettingComponent } from './components/main-space-setting/sidebar-setting/sidebar-setting.component';
 import { ViewSettingComponent } from './components/main-space-setting/view-setting/view-setting.component';
@@ -52,6 +52,7 @@ import { ViewDetailComponent } from './layout/modal/view-detail/view-detail.comp
 import { SettingComponent } from './layout/ui/setting/setting.component';
 import { AvatarComponent } from './layout/ui/avatar/avatar.component';
 import { AddPostButtonComponent } from './layout/ui/add-post-button/add-post-button.component';
+import { FriendListComponent } from './layout/ui/friend-list/friend-list.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { AddPostButtonComponent } from './layout/ui/add-post-button/add-post-but
     ViewDetailComponent,
     SettingComponent,
     AvatarComponent,
-    AddPostButtonComponent
+    AddPostButtonComponent,
+    FriendListComponent
   ],
   imports: [
     BrowserModule,

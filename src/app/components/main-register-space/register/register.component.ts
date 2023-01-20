@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RegisterAnimation } from 'src/app/layout/Material/animation/register-animation';
-import { StateRegisterService } from 'src/app/layout/Material/animation/register-animation';
+import { RegisterAnimation } from 'src/app/layout/material/animation/register-animation';
+import { StateRegisterService } from 'src/app/layout/material/animation/register-animation';
 
 @Component({
   selector: 'app-register',

@@ -1,5 +1,5 @@
 <!-- Main Profile Space (Current User) -->
-<div class="main-space-profile" *ngIf="(router.url.indexOf(currentUserId))">
+<div class="main-space-profile" *ngIf="isCurrentUser">
   <!-- My Current Profile -->
   <div class="background_defaultCover w-100">
     <img class="w-100 h-100" src="../../../assets/images/CoverProfile.png" alt="Cover">
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Stories -->
-  <div class="container-fluid">
+  <div class="container-fluid" *ngIf="!router.url.includes('profile-friend-list')">
     <div class="row">
       <div class="col-12">
         <app-stories></app-stories>
@@ -47,7 +47,7 @@
 </div>
 
 <!-- Main Profile Space (Target User) -->
-<div class="main-space-profile" *ngIf="!(router.url.indexOf(currentUserId))">
+<div class="main-space-profile" *ngIf="!isCurrentUser">
   <!-- My Current Profile -->
   <div class="background_defaultCover w-100">
     <img class="w-100 h-100" src="../../../assets/images/CoverProfile.png" alt="Cover">

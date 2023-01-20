@@ -1,0 +1,20 @@
+// No Friend Founded
+.no-friend-founded {
+  p.no-friend-founded:nth-of-type(1) {
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  button.to-messenger {
+    position: relative;
+    width: 150px;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}
+
+
