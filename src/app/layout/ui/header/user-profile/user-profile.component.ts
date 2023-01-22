@@ -27,8 +27,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     public authData: AuthData,
-    public authService: AuthService,
-    public dialog: MatDialog,
+    private authService: AuthService,
+    private dialog: MatDialog,
     private notifService: NotificationService,
     private stateRegister: StateRegisterService
   ) { }
@@ -45,7 +45,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   // Accept the Friend Request
-  onAcceptNewFriend(notif: NotifModel) {
+  onAcceptNewFriend(notif: NotifModel): void {
     // Construct Request Model
     const requestValidated = new RequestValidated();
     requestValidated.requestCreatedById = notif.requestCreateById;
@@ -58,7 +58,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   // Delete Notif
-  onDeleteNotification(id: string) {
+  onDeleteNotification(id: string): void {
     this.notifService.deleteNotification(id);
   }
 

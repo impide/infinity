@@ -6,6 +6,8 @@
   </svg>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li class="dropdown-item cursor-pointer" (click)="onDetailPost(post)">Detail</li>
-    <li class="dropdown-item cursor-pointer" (click)="onDeletePost(post._id)">Delete</li>
+    <li class="dropdown-item cursor-pointer" (click)="onDeletePost(post._id)" *ngIf="post.userId === authData.getCurrentUserId()">
+      Delete
+    </li>
   </ul>
 </div>

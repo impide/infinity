@@ -23,8 +23,8 @@ export class FriendsListsComponent implements OnInit {
 
   constructor(
     public authData: AuthData,
-    public authService: AuthService,
-    public router: Router
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {

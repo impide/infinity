@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { PostId } from 'src/app/components/main-space-story/main-space-story.component';
 import { PostService } from 'src/app/services/post/post.service';
 
@@ -11,18 +12,18 @@ import { PostService } from 'src/app/services/post/post.service';
 export class DeletePostComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private postService: PostService,
     @Inject(MAT_DIALOG_DATA) public postId: PostId
   ) { }
 
   ngOnInit(): void { }
 
-  onDeletePost() {
+  onDeletePost(): Subscription {
     return this.postService.deletePost(this.postId._id);
   }
 
-  onCloseModal() {
+  onCloseModal(): void {
     return this.dialog.closeAll();
   }
 

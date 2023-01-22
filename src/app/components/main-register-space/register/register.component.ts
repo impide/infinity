@@ -12,8 +12,8 @@ import { StateRegisterService } from 'src/app/layout/material/animation/register
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog,
     public stateRegister: StateRegisterService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void { }

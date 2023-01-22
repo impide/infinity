@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/authentification/authAPI/auth.serv
 export class LoginComponent implements OnInit {
   showPassword: boolean = false;
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {}
 

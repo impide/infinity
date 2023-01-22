@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { PostModel } from 'src/app/models/post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { DeletePostComponent } from '../../modal/delete-post/delete-post.component';
 import { ViewDetailComponent } from '../../modal/view-detail/view-detail.component';
 
@@ -19,14 +20,15 @@ export class SettingComponent implements OnInit {
   @Input() post: PostModel;
 
   constructor(
-    public dialog: MatDialog,
-    public authService: AuthService
+    public authData: AuthData,
+    private dialog: MatDialog,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void { }
 
   // Open Setting Modal (Detail Post)
-  onDetailPost(post: PostModel) {
+  onDetailPost(post: PostModel): void {
     this.dialog.open(ViewDetailComponent, {
       data: {
         postData: post
@@ -36,7 +38,7 @@ export class SettingComponent implements OnInit {
   };
 
   // Open Setting Modal (Delete Post)
-  onDeletePost(_id: string) {
+  onDeletePost(_id: string): void {
     this.dialog.open(DeletePostComponent, {
       data: {
         _id: _id

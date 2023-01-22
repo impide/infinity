@@ -32,7 +32,7 @@ export class UpdateStoriesComponent implements OnInit {
   ngOnInit(): void {}
 
   // Select a Option for updating
-  chooseOption(option: string) {
+  chooseOption(option: string): void {
     this.optionsChoice = option;
     // Clean up
     this.selectedCategory = null;
@@ -41,7 +41,7 @@ export class UpdateStoriesComponent implements OnInit {
     this.selectedNumber = null;
   }
 
-  onValidateStories() {
+  onValidateStories(): void {
     if (!this.selectedCategory || !this.selectedImage) {
       return;
     }
@@ -54,11 +54,11 @@ export class UpdateStoriesComponent implements OnInit {
     this.storiesService.addOneStorie(createStories, this.selectedImageFile);
   }
 
-  selectedOneStorie(storie: StorieModel) {
+  selectedOneStorie(storie: StorieModel): string {
     return this.storieIdToDelete = storie._id;
   }
 
-  onDeleteStories() {
+  onDeleteStories(): void {
     // Display All Image and Create a Checkbox for Retrieve ID et do Deletion
     if (!(this.selectedCategory) || !(this.selectedNumber)) {
       return;
@@ -82,7 +82,7 @@ export class UpdateStoriesComponent implements OnInit {
   };
 
   // Read File (image)
-  onPhotoSelected(photoSelector: HTMLInputElement) {
+  onPhotoSelected(photoSelector: HTMLInputElement): void {
     this.selectedImageFile = photoSelector.files[0];
     if (!this.selectedImageFile) return;
     let fileReader = new FileReader();

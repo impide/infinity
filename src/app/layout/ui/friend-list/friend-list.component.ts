@@ -12,7 +12,7 @@ export class FriendListComponent implements OnInit {
   filteredFriends$: Observable<[{ username: string, avatar: string, userId: string }]>;
 
   constructor(
-    public authData: AuthData,
+    private authData: AuthData,
   ) { }
 
   ngOnInit(): void {

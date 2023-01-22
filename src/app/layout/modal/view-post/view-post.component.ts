@@ -32,8 +32,8 @@ export class ViewPostComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public post: PostsModel,
     public authData: AuthData,
-    public dialog: MatDialog,
-    public router: Router,
+    private dialog: MatDialog,
+    private router: Router,
     private authService: AuthService,
     private commentService: CommentService
   ) { }
@@ -48,7 +48,7 @@ export class ViewPostComponent implements OnInit {
     )
   }
 
-  isCommentCreator(comment: CommentModel) {
+  isCommentCreator(comment: CommentModel): boolean {
     try {
       return comment.userId === this.authData.getCurrentUserId();
     } catch (err) {
@@ -57,7 +57,7 @@ export class ViewPostComponent implements OnInit {
     }
   };
 
-  onAddComment(commentInput: HTMLInputElement) {
+  onAddComment(commentInput: HTMLInputElement): void {
     // Retrieve PostId
     const postId = this.post.postData._id;
     // Construct Comment Model
@@ -72,7 +72,7 @@ export class ViewPostComponent implements OnInit {
   };
 
     // Open Setting Modal (Detail Post)
-    onDetailPost() {
+    onDetailPost(): void {
       const post = {
         creator: this.post.postData.creator,
         likes: this.post.postData.likes,
@@ -88,7 +88,7 @@ export class ViewPostComponent implements OnInit {
     };
 
     // Open Setting Modal (Delete Post)
-    onDeletePost() {
+    onDeletePost(): void {
       const _id = this.post.postData._id;
       this.dialog.open(DeletePostComponent, {
         data: {

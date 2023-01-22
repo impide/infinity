@@ -13,7 +13,7 @@ export class ViewDetailComponent implements OnInit {
   date: Date;
 
   constructor(
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public post: PostsModel
   ) { }
 
@@ -23,7 +23,7 @@ export class ViewDetailComponent implements OnInit {
     this.date = this.post.postData.createdAt;
   }
 
-  onCloseModal() {
+  onCloseModal(): void {
     return this.dialog.closeAll();
   }
 

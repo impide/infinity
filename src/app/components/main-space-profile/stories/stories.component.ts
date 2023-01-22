@@ -20,9 +20,9 @@ export class StoriesComponent implements OnInit {
   stories$: Observable<StorieModel[]>;
 
   constructor(
-    public dialog: MatDialog,
     public authData: AuthData,
     public storieData: StorieData,
+    private dialog: MatDialog,
     private storiesAPI: StorieService,
     private authService: AuthService
   ) { }

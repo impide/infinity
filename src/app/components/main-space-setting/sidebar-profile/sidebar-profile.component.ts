@@ -19,8 +19,8 @@ export class SidebarProfileComponent implements OnInit {
 
   constructor(
     public authData: AuthData,
-    public authService: AuthService,
-    public profileSettingService: ProfileSettings
+    public profileSettingService: ProfileSettings,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void { }

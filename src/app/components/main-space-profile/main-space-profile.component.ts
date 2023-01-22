@@ -1,11 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RetrieveRoutesData } from 'src/app/core/data/retrieve-routes-id.service';
 import { ProfileRoutes, ProfileRoutesData } from 'src/app/core/data/routes-profile-data';
 import { NotifModel } from 'src/app/models/notif/notif.model';
-import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { NotificationService } from 'src/app/services/notification/notificationAPI/notification.service';
 import { NotificationData } from 'src/app/services/notification/notificationData/notification.data';
@@ -31,9 +29,7 @@ export class MainSpaceProfileComponent implements OnInit, OnDestroy {
 
   constructor(
     public router: Router,
-    public dialog: MatDialog,
     public authData: AuthData,
-    public authService: AuthService,
     private dataParamsUserRoute : RetrieveRoutesData,
     private activatedRoute: ActivatedRoute,
     private notificationData: NotificationData,

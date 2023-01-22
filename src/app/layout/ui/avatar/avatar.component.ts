@@ -17,8 +17,8 @@ export class AvatarComponent implements OnInit {
   @Input() post: PostModel;
 
   constructor(
-    public router: Router,
-    public authService: AuthService
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {

@@ -21,9 +21,9 @@ export class MainSpaceStoryComponent implements OnInit {
   userId: string;
 
   constructor(
-    public dialog: MatDialog,
     public authData: AuthData,
-    public authService: AuthService,
+    private dialog: MatDialog,
+    private authService: AuthService,
     private postService: PostService
   ) { }
 
@@ -41,14 +41,14 @@ export class MainSpaceStoryComponent implements OnInit {
   };
 
   // Like a Post
-  onLikePost(post: PostModel) {
+  onLikePost(post: PostModel): void {
     const userId = new LikeModel();
     userId.userId = this.authData.getCurrentUserId();
     this.postService.addOneLike(post, userId);
   };
 
   // View Post in Modal
-  onViewPost(post: PostModel) {
+  onViewPost(post: PostModel): void {
     this.dialog.open(ViewPostComponent, {
       panelClass: ['col-8'],
       data: {

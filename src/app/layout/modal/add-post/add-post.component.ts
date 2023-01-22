@@ -22,7 +22,7 @@ export class AddPostComponent implements OnInit {
   }
 
   // Create & Save Post
-  onCreatePost(commentInput: HTMLTextAreaElement) {
+  onCreatePost(commentInput: HTMLTextAreaElement): void {
     const post = new PostModel();
     post.content = commentInput.value;
     post.image = this.selectedImage;
@@ -33,7 +33,7 @@ export class AddPostComponent implements OnInit {
   }
 
   // Read File (image)
-  onPhotoSelected(photoSelector: HTMLInputElement) {
+  onPhotoSelected(photoSelector: HTMLInputElement): void {
     this.selectedImageFile = photoSelector.files[0];
     if (!this.selectedImageFile) return;
     let fileReader = new FileReader();

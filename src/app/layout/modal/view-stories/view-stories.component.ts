@@ -20,8 +20,8 @@ export class ViewStoriesComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public importedStorieData: StorieViewModal,
     public storieData: StorieData,
-    public storiesService: StorieService,
-    public dialog: MatDialog
+    private dialog: MatDialog,
+    private storiesService: StorieService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class ViewStoriesComponent implements OnInit {
   }
 
   // Lecture Storie(s)
-  proceedAnimationStorie() {
+  proceedAnimationStorie(): void {
     if (this.categoriesLength <= 1) {
       this.animateOneStorie();
     } else {

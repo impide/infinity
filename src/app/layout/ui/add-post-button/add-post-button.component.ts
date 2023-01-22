@@ -10,7 +10,7 @@ import { AddPostComponent } from '../../modal/add-post/add-post.component';
 export class AddPostButtonComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {

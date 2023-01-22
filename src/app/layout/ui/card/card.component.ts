@@ -20,9 +20,9 @@ export class CardComponent implements OnInit, OnDestroy {
   postsSub: Subscription;
 
   constructor(
-    public dialog: MatDialog,
-    public router: Router,
-    public authData: AuthData,
+    private dialog: MatDialog,
+    private router: Router,
+    private authData: AuthData,
     private postService: PostService,
     private dataParamsUserRoute: RetrieveRoutesData,
   ) { }
@@ -44,7 +44,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
 
   // View Post in Modal
-  onViewPost(post: PostModel) {
+  onViewPost(post: PostModel): void {
     this.dialog.open(ViewPostComponent, {
       panelClass: ['col-8'],
       data: {
@@ -54,7 +54,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
 
   // Open Setting (Delete Post)
-  onOpenSetting(_id: string) {
+  onOpenSetting(_id: string): void {
     this.dialog.open(DeletePostComponent, {
       data: {
         _id: _id
