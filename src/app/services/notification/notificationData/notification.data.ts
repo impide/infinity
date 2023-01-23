@@ -1,8 +1,6 @@
 import { Injectable, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
-import { RetrieveRoutesData } from "src/app/core/data/retrieve-routes-id.service";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { NotifModel } from "src/app/models/notif/notif.model";
-import { UserModel } from "src/app/models/user/user.model";
 import { AuthService } from "../../authentification/authAPI/auth.service";
 import { AuthData } from "../../authentification/authData/auth.data";
 import { NotificationService } from "../notificationAPI/notification.service";
@@ -15,19 +13,13 @@ export class NotificationData implements OnDestroy {
     notifsSub: Subscription;
     notifs: NotifModel[];
 
-    // Users
-    usersSub: Subscription;
-    users: UserModel[];
-
     // Request & Target
-    requestButton: string;
-    targetAvatar: string;
+    requestButton$ = new BehaviorSubject<string>('Loading...');
 
     constructor(
         private authData: AuthData,
         private authAPI: AuthService,
         private notifService: NotificationService,
-        private dataParamsUserRoute : RetrieveRoutesData
     ) { }
 
     getNotificationData(): void {
@@ -40,47 +32,41 @@ export class NotificationData implements OnDestroy {
         )
     };
 
-    getRequestSending(notifs: NotifModel[]): string {
+    getRequestSending(notifs: NotifModel[]) {
+      if (!(notifs?.length > 0)) return;
         // Array of each request Current User has Create (Filtering by his Id)
-        const currentNotif = notifs.filter(x => x.requestCreateById === this.authData.getCurrentUserId());
+        const sortByCreatedRequests = notifs.filter(notif => notif.requestCreateById === this.authData.getCurrentUserId());
+
         // Check if a request has been send to this Target User (Filtering by Target Id)
-        if ((currentNotif.filter(x => x.requestReceiverId === this.dataParamsUserRoute.getRoutesId())).length > 0) {
-            // Set the State of Request
-            return this.requestButton = 'Pending';
-        } else {
-            return this.requestButton = '';
-        }
-    };
+        const receiverId = sortByCreatedRequests.filter((receiver) => (
+          receiver._id === this.authAPI.user$.value._id
+        ));
 
-    // Get all Users (To check if this Users are already friends)
-    getFilteredUserRequest(requestButton: string): void {
-        this.authAPI.getAllUsers();
-        this.usersSub = this.authAPI.users$.subscribe(
-            (users: UserModel[]) => {
-                this.getRequestValidating(users, requestButton);
-            }
-        )
-    };
+      if (sortByCreatedRequests.length && receiverId) {
+            return this.requestButton$.next('Pending');
+          } else {
+            return this.requestButton$.next('Loading...');
+          }
+      };
 
-    getRequestValidating(users: UserModel[], requestButton: string): void {
-        /* Before anything, Retrieve target User Avatar */
-        this.targetAvatar = users.filter(userId => userId._id === this.dataParamsUserRoute.getRoutesId())[0].avatar;
-        /* If the request is "Pending" then no need to continue */
-        if (requestButton === 'Pending') {
-            return;
+    getRequestValidating(targetUserId: string): void {
+      if (targetUserId) {
+      /* If the request is "Pending" or User's Friends is empty then no need to continue */
+        if (this.requestButton$.value === 'Pending') return;
+        if (!(this.authData.getFilteredFriends()?.length > 0)) {
+          this.requestButton$.next('Add Friend');
+          return;
         }
-        /* Else, Retrieve the data of current User connected */
-        this.users = users.filter(x => x._id === this.authData.getCurrentUserId());
-        /* We filtered the previous data for check if target User Profile was already friend */
-        for (let i = 0; i < this.users.filter(x => x.friends).length; i++) {
-            const filteredFriends = this.users.filter(x => x.friends[i]?.username === this.dataParamsUserRoute.getRoutesUsername());
-            if (filteredFriends.length > 0) {
-                // Set the State of Request
-                this.requestButton = 'Already Friend';
-            } else {
-                this.requestButton = 'Add Friend';
-            }
-        }
+
+      /* We filtered Data for check if Target User was Already friend with Current */
+        this.authData.getFilteredFriends().forEach((friend) => {
+          if (friend.userId === targetUserId) {
+            this.requestButton$.next('Already Friend');
+          } else {
+            this.requestButton$.next('Add Friend');
+          }
+        });
+      }
     };
 
     ngOnDestroy(): void {

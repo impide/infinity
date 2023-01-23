@@ -14,12 +14,4 @@ export class RetrieveRoutesData {
     getRoutesId(): string {
         return this.targetUserId$.value;
     };
-
-    setRoutesUsername(username: string): void {
-      this.targetUsername$.next(username);
-    };
-
-    getRoutesUsername(): string {
-      return this.targetUsername$.value;
-    };
 }

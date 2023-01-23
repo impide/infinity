@@ -13,7 +13,7 @@ import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 export class FriendsListsComponent implements OnInit {
   // Filtered users & Filtered friends
   filteredUsers$: Observable<UserModel[]>;
-  filteredFriends$: Observable<[{ username: string, avatar: string, userId: string }]>;
+  filteredFriends: [{ username: string, avatar: string, userId: string }];
 
   // Filter Users on Search bar
   searchText: string;
@@ -31,7 +31,7 @@ export class FriendsListsComponent implements OnInit {
     // Get all Users
     this.authService.getAllUsers();
     this.filteredUsers$ = this.authData.getFilteredUsers();
-    this.filteredFriends$ = this.authData.getFilteredFriends();
+    this.filteredFriends = this.authData.getFilteredFriends();
   }
 
   // Go to target Profile User

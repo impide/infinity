@@ -53,6 +53,7 @@ import { SettingComponent } from './layout/ui/setting/setting.component';
 import { AvatarComponent } from './layout/ui/avatar/avatar.component';
 import { AddPostButtonComponent } from './layout/ui/add-post-button/add-post-button.component';
 import { FriendListComponent } from './layout/ui/friend-list/friend-list.component';
+import { OtherSpaceProfileComponent } from './components/other-space-profile/other-space-profile.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { FriendListComponent } from './layout/ui/friend-list/friend-list.compone
     SettingComponent,
     AvatarComponent,
     AddPostButtonComponent,
-    FriendListComponent
+    FriendListComponent,
+    OtherSpaceProfileComponent
   ],
   imports: [
     BrowserModule,

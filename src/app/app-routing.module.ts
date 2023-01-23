@@ -11,6 +11,7 @@ import { CardComponent } from './layout/ui/card/card.component';
 import { MainSpaceSettingComponent } from './components/main-space-setting/main-space-setting.component';
 import { DashboardComponent } from './components/main-space-setting/components-setting/dashboard/dashboard.component';
 import { FriendListComponent } from './layout/ui/friend-list/friend-list.component';
+import { OtherSpaceProfileComponent } from './components/other-space-profile/other-space-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main-space-register', pathMatch: 'full' },
@@ -21,10 +22,13 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
     ],
   },
+
   // Story Path
   { path: 'main-space-story', component: MainSpaceStoryComponent },
+
   // Messenger Path
   { path: 'main-space-messenger', component: MainSpaceMessengerComponent, canActivate: [AuthGuard] },
+
   // Setting Path
   {
     path: 'main-space-setting', component: MainSpaceSettingComponent, canActivate: [AuthGuard], children: [
@@ -32,7 +36,8 @@ const routes: Routes = [
       { path: 'dashboard-view', component: DashboardComponent }
     ]
   },
-  // Profile Path
+
+  // Main Profile Path
   {
     path: 'main-space-profile/:id/:username', component: MainSpaceProfileComponent, canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'profile-publication', pathMatch: 'full' },
@@ -40,6 +45,16 @@ const routes: Routes = [
       { path: 'profile-friend-list', component: FriendListComponent }
     ]
   },
+
+  // Other Profile Path
+  {
+    path: 'other-space-profile/:id/:username', component: OtherSpaceProfileComponent, canActivate: [AuthGuard], children: [
+      { path: '', redirectTo: 'profile-publication', pathMatch: 'full' },
+      { path: 'profile-publication', component: CardComponent },
+      { path: 'profile-friend-list', component: FriendListComponent }
+    ]
+  },
+
   // Not Found Path
   { path: '**', component: NotFoundComponent }
 ];

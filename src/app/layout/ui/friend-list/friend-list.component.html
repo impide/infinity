@@ -1,21 +1,21 @@
 
-<div class="container mb-5">
+<div class="container custom-border bg-dark">
   <div class="row">
-    <ng-container *ngIf="(filteredFriends$ | async)?.length > 0">
-      <div class="friends-list d-flex justify-content-between align-items-center" *ngFor="let friend of (filteredFriends$ | async)">
+    <ng-container *ngIf="filteredFriends?.length > 0">
+      <div class="friends-list p-5 d-flex justify-content-between align-items-center" *ngFor="let friend of filteredFriends">
         <div class="friend-avatar">
-          <img [src]="friend.avatar" alt="Avatar">
+          <img class="w-100 h-100" [src]="friend.avatar" alt="Avatar">
         </div>
         <div class="friend-pseudo">
-          <p>{{friend.username}}</p>
+          <p class="text-white mb-0">{{friend.username}}</p>
         </div>
         <div class="actions">
-          <button class="btn btn-primary">Profile</button>
+          <button class="btn btn-primary me-3" (click)="goToProfile(friend)">Profile</button>
           <button class="btn btn-danger">Remove</button>
         </div>
       </div>
     </ng-container>
-    <div class="no-friend-founded d-flex flex-column align-items-center" *ngIf="!(filteredFriends$ | async) || !(filteredFriends$ | async)?.length">
+    <div class="no-friend-founded d-flex flex-column align-items-center" *ngIf="!(filteredFriends?.length > 0)">
       <p class="no-friend-founded mb-0">Not Friend Found Here!</p>
       <span class="mb-2">Go to Messenger, maybe you'll recognize someone on the list of users</span>
       <button class="to-messenger btn btn-primary">

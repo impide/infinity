@@ -1,4 +1,26 @@
-// No Friend Founded
+// Friends Found
+.friends-list {
+  .friend-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+    }
+  }
+
+  .friend-pseudo {
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+// No Friends Founded
 .no-friend-founded {
   p.no-friend-founded:nth-of-type(1) {
     font-size: 30px;
@@ -14,7 +36,9 @@
       text-decoration: none;
     }
   }
-
 }
 
+.custom-border {
+  border-radius: 20px;
+}
 

@@ -1,5 +1,6 @@
 // Notification
 .notification {
+  cursor: pointer;
     .mat-icon {
         font-size: 30px;
         color: #0000001f;
@@ -28,12 +29,12 @@
 
 //  Avatar
 .notif-menu {
-    top: 42px; 
+    top: 42px;
     left: -320px;
 }
 .profil-menu,
-.power-button-menu { 
-    top: 50px; 
+.power-button-menu {
+    top: 50px;
     left: -105px;
 }
 
@@ -63,7 +64,7 @@
 }
 
 .bi-power:active {
-    box-shadow: 
+    box-shadow:
     -10px -10px 15px rgba(255, 255, 255, 0.5),
     10px 10px 15px rgba(70, 70, 70, 0.12),
     inset -10px -10px 15px rgba(255, 255, 255, 0.5),

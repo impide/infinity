@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { RetrieveRoutesData } from 'src/app/core/data/retrieve-routes-id.service';
 import { PostModel } from 'src/app/models/post/post.model';
+import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
 import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 import { PostService } from 'src/app/services/post/post.service';
 import { DeletePostComponent } from '../../modal/delete-post/delete-post.component';
@@ -28,12 +29,15 @@ export class CardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // Get all Posts
     this.postService.getPosts();
+    this.getPostsDependingUser();
+  }
+
+  getPostsDependingUser(): void {
     this.postsSub = this.postService.posts$.subscribe(
       (posts: PostModel[]) => {
         // If Router Url = CurrentUserId, we show only his posts
-        if (this.router.url.includes(this.authData.getCurrentUserId())) {
+        if (this.router.url.match(this.authData.getCurrentUserId())) {
           this.posts = posts.filter(x => x.userId === this.authData.getCurrentUserId());
           // Else if Router Url = TargetUserId we do the same previous thing
         } else {

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { StateRegisterService } from 'src/app/layout/material/animation/register-animation';
 import { SnackBarService } from 'src/app/layout/material/snackbar/snackbar-service';
 import { Data } from 'src/app/models/data/data.model';
@@ -18,7 +18,9 @@ export class AuthService {
   private api = environment.api;
   token: string;
 
-  // Observable Users
+  // User
+  user$ = new BehaviorSubject<UserModel>(null);
+  // Users []
   users: UserModel[];
   users$ = new Subject<UserModel[]>();
 
@@ -74,8 +76,22 @@ export class AuthService {
     )
   };
 
+  // Return one Specific User
+  getOneUser(userId: string): Subscription {
+    return this.http.get<Data>(this.api + `/users/${userId}`).subscribe(
+      {
+        next: (userData: Data) => {
+          this.user$.next(userData.result);
+        },
+        error: (userData: Data) => {
+          this.snackbar.openSnackBar(userData.message, 5);
+        }
+      }
+    )
+  }
+
   // Create a new User
-  signup(username: string, email: string, password: string) {
+  signup(username: string, email: string, password: string): Subscription {
     const avatar = 'https://images.unsplash.com/photo-1648381758790-d585916446a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80';
     return this.http.post(this.api + '/users/signup', { username: username, email: email, password: password, avatar: avatar }).subscribe(
       {
@@ -91,7 +107,7 @@ export class AuthService {
   }
 
   // Authenticate User => must signup first
-  signin(email: string, password: string) {
+  signin(email: string, password: string): Subscription {
     return this.http.post(this.api + '/users/login', { email: email, password: password }).subscribe(
       {
         next: (authData: { token: string, userData: UserModel }) => {
@@ -121,7 +137,7 @@ export class AuthService {
   }
 
   // Update Avatar Profile
-  updateOneAvatar(id: string, image: File) {
+  updateOneAvatar(id: string, image: File): Subscription {
     console.log(image);
 
     let userData: FormData = new FormData();

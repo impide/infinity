@@ -5,4 +5,8 @@
 
 .dropdown-menu {
   transform: translate(-125px, 30px) !important;
+
+  li {
+    cursor: pointer;
+  }
 }

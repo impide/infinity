@@ -5,7 +5,8 @@
         <div class="notification d-flex align-items-center me-4 dropdown position-relative" *ngIf="(isAuth$|async)">
             <div class="m-0 dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <mat-icon matBadgeSize="small" matBadge="{{notifs?.length}}" matBadgeColor="primary">
-                    notifications</mat-icon>
+                    notifications
+                </mat-icon>
             </div>
             <ul class="dropdown-menu notif-menu text-center mt-0 p-0" aria-labelledby="dropdownMenuButton1">
                 <!-- *ngFor Notifs -->

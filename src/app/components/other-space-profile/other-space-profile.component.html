@@ -1,0 +1,43 @@
+<!-- Main Profile Space (Target User) -->
+<div class="main-space-profile">
+  <!-- My Current Profile -->
+  <div class="background_defaultCover w-100">
+    <img class="w-100 h-100" src="../../../assets/images/CoverProfile.png" alt="Cover">
+    <!-- Pseudo -->
+    <div class="pseudo-user">
+      <span>{{ (targetUser$ | async)?.username }}</span>
+    </div>
+    <!-- Add Friends Button -->
+    <div class="add-friend" [ngSwitch]="(requestButton$ | async)">
+      <button class="btn btn-primary" *ngSwitchCase="'Add Friend'" (click)="onAddFriend()">Add Friend</button>
+      <button class="btn btn-warning" *ngSwitchCase="'Pending'">Pending</button>
+      <button class="btn btn-success" *ngSwitchCase="'Already Friend'">Already Friend</button>
+      <button class="btn btn-primary" *ngSwitchCase="'Loading...'">Loading...</button>
+    </div>
+    <!-- Avatar -->
+    <div class="avatar-user">
+      <img class="w-100 h-100" [src]="(targetUser$ | async)?.avatar" alt="Avatar">
+    </div>
+  </div>
+
+  <!-- Tab Lists -->
+  <div class="tabSpace w-100">
+    <div class="section d-flex align-items-center h-100">
+      <ul class="col-6 d-flex justify-content-start align-items-center m-0">
+        <li class="me-5" *ngFor="let route of profileRoutes">
+          <a class="nav-link" routerLinkActive="activeTab" [routerLinkActiveOptions]="{exact:
+                        true}" [routerLink]="[route.routePath]">{{route.profileName.split('My')[1]}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Profile Tab -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

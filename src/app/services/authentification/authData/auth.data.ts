@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { map, Observable, } from "rxjs";
 import { UserModel } from "src/app/models/user/user.model";
 import { AuthService } from "../authAPI/auth.service";
 
@@ -36,12 +36,17 @@ export class AuthData {
     return this.authAPI.currentUserData$.value.email;
   };
 
+  // Friends of Current User (Value)
+  getFilteredFriends(): [{ username: string, avatar: string, userId: string }] {
+    return this.authAPI.currentUserData$.value.friends;
+  }
+
   // Return all Users as Observable
   getUsers(): Observable<UserModel[]> {
     return this.authAPI.users$.asObservable();
   };
 
-  // Users lists without current User
+  // All Users without Current User
   getFilteredUsers(): Observable<UserModel[]> {
     return this.authAPI.users$.pipe(
       map(
@@ -50,12 +55,4 @@ export class AuthData {
     );
   };
 
-  // Friends of current User
-  getFilteredFriends(): Observable<[{ username: string, avatar: string, userId: string }]> {
-    return this.authAPI.users$.pipe(
-      map(
-        users => users.filter(user => user._id === this.getCurrentUserId())[0].friends
-      )
-    )
-  };
 }

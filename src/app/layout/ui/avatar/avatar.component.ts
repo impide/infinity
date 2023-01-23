@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PostModel } from 'src/app/models/post/post.model';
 import { AuthService } from 'src/app/services/authentification/authAPI/auth.service';
+import { AuthData } from 'src/app/services/authentification/authData/auth.data';
 
 @Component({
   selector: 'app-avatar',
@@ -18,6 +19,7 @@ export class AvatarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private authData: AuthData,
     private authService: AuthService
   ) { }
 
@@ -26,7 +28,14 @@ export class AvatarComponent implements OnInit {
 
   // Go to Profile User
   goToProfile(post: PostModel): void {
-    this.router.navigate(['/main-space-profile', post.userId, post.creator]);
+    const pathUrl = `${post.userId}/${post.creator}`;
+
+    if (post.userId === this.authData.getCurrentUserId()) {
+      this.router.navigate([`/main-space-profile/${pathUrl}`]);
+    } else {
+      this.router.navigate([`/other-space-profile/${pathUrl}`]);
+    }
+
   }
 
 }
