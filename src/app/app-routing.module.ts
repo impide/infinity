@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'main-space-story', component: MainSpaceStoryComponent },
 
   // Messenger Path
-  { path: 'main-space-messenger', component: MainSpaceMessengerComponent, canActivate: [AuthGuard] },
+  { path: 'main-space-messenger', component: MainSpaceMessengerComponent },
 
   // Setting Path
   {
